@@ -13,6 +13,8 @@ import java.awt.Dimension;
 
 
 public class main extends JFrame {
+	public main() {
+	}
 
 
 	private static JTextField trainerUser;
@@ -28,7 +30,7 @@ public class main extends JFrame {
 
 	private static void initFrame() {
 			
-		JFrame mainFrame = new JFrame();
+		final JFrame mainFrame = new JFrame();
 		mainFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		mainFrame.setFont(new Font("Cambria Math", Font.PLAIN, 13));
 		mainFrame.getContentPane().setBackground(new Color(255, 235, 205));
@@ -94,17 +96,24 @@ public class main extends JFrame {
 		JLabel signUpButton = new JLabel("");
 		signUpButton.setIcon(new ImageIcon(main.class.getResource("/images/signup2.png")));
 		signUpButton.setBounds(135, 296, 55, 48);
+		signUpButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				
+				attemptLogin();
+				/*///* CODE TO BRING UP ACCT REGISTRATION WINDOW *\\\\ 
+				System.out.println("here");
+				lostPass lp = new lostPass();
+				lp.startPage();
+				mainFrame.dispose(); */
+			}
+		});
+
+
 		mainFrame.getContentPane().add(signUpButton);
 		
 		JLabel SignupButtonLabel = new JLabel("Signup");
 		SignupButtonLabel.setBounds(131, 346, 70, 15);
 		SignupButtonLabel.setFont(new Font("Cambria Math", Font.PLAIN, 12));
-		SignupButtonLabel.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
-				
-				///* CODE TO BRING UP ACCT REGISTRATION WINDOW *\\\\ 
-				}
-		});
 		
 		
 		forgottenPW.setFont(new Font("Cambria Math", Font.PLAIN, 13));

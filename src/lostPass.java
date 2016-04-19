@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Label;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 public class lostPass extends JFrame {
 	private JTextField emailField;
@@ -17,13 +18,8 @@ public class lostPass extends JFrame {
 		getContentPane().setBackground(new Color(255, 235, 205));
 		getContentPane().setLayout(null);
 		
-		JLabel icon = new JLabel("");
-		icon.setIcon(new ImageIcon(lostPass.class.getResource("/images/logo.png")));
-		icon.setBounds(128, 9, 200, 173);
-		getContentPane().add(icon);
-		
 		emailField = new JTextField();
-		emailField.setBounds(164, 216, 157, 22);
+		emailField.setBounds(177, 223, 157, 22);
 		getContentPane().add(emailField);
 		emailField.setColumns(10);
 		
@@ -32,16 +28,21 @@ public class lostPass extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		submit.setBounds(185, 261, 92, 22);
+		submit.setBounds(201, 256, 84, 22);
 		getContentPane().add(submit);
 		
 		Label email = new Label("Email:");
-		email.setBounds(128, 216, 32, 22);
+		email.setBounds(141, 223, 32, 22);
 		getContentPane().add(email);
 		
 		Label message = new Label("Enter your email, so we can send you your password.");
 		message.setFont(new Font("Dialog", Font.PLAIN, 15));
-		message.setBounds(46, 188, 362, 22);
+		message.setBounds(59, 188, 362, 22);
 		getContentPane().add(message);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(lostPass.class.getResource("/images/logo.png")));
+		label.setBounds(134, 10, 200, 174);
+		getContentPane().add(label);
 	}
 }

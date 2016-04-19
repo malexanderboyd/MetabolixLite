@@ -13,65 +13,148 @@ import java.awt.Dimension;
 
 
 public class main extends JFrame {
-	private JTextField trainerUser;
-	private JPasswordField trainerPass;
-	 public main() {
-	 	getContentPane().setFont(new Font("Cambria Math", Font.PLAIN, 13));
-	 	getContentPane().setBackground(new Color(255, 235, 205));
-	 	setTitle("MetabolixLite");
-	 	setMinimumSize(new Dimension(350, 350));
-	 	setMaximumSize(new Dimension(350, 350));
-	 	setResizable(false);
-	 	setFont(new Font("Corbel", Font.PLAIN, 14));
-		getContentPane().setLayout(null);
+
+
+	private static JTextField trainerUser;
+	private static JPasswordField trainerPass;
+	private static JLabel errorText = new JLabel("");
+	private static JLabel forgottenPW = new JLabel("");
+	
+	
+	public static void main(String[] args) {
+		
+		initFrame();
+	}
+
+	private static void initFrame() {
+			
+		JFrame mainFrame = new JFrame();
+		mainFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		mainFrame.setFont(new Font("Cambria Math", Font.PLAIN, 13));
+		mainFrame.getContentPane().setBackground(new Color(255, 235, 205));
+		mainFrame.setTitle("MetabolixLite");
+		mainFrame.setMinimumSize(new Dimension(400, 400));
+		mainFrame.setMaximumSize(new Dimension(400, 400));
+		mainFrame.setResizable(false);
+		mainFrame.setFont(new Font("Corbel", Font.PLAIN, 14));
+		mainFrame.getContentPane().setLayout(null);
 		//x,y,w,h
 		trainerUser = new JTextField();
 		trainerUser.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		trainerUser.setBounds(126, 180, 86, 20);
-		getContentPane().add(trainerUser);
+		trainerUser.setBounds(150, 180, 100, 20);
+		mainFrame.getContentPane().add(trainerUser);
 		trainerUser.setColumns(10);
 		
 		trainerPass = new JPasswordField();
 		trainerPass.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		trainerPass.setBounds(126, 220, 86, 20);
-		getContentPane().add(trainerPass);
+		trainerPass.setBounds(150, 220, 100, 20);
+		mainFrame.getContentPane().add(trainerPass);
 		
 		JLabel trainerPassLabel = new JLabel("Password");
 		trainerPassLabel.setLabelFor(trainerPass);
-		trainerPassLabel.setBounds(126, 204, 46, 14);
-		getContentPane().add(trainerPassLabel);
+		trainerPassLabel.setBounds(150, 204, 75, 14);
+		mainFrame.getContentPane().add(trainerPassLabel);
 		
 		JLabel trainerUserLabel = new JLabel("Username");
 		trainerUserLabel.setLabelFor(trainerUser);
-		trainerUserLabel.setBounds(127, 165, 55, 14);
-		getContentPane().add(trainerUserLabel);
+		trainerUserLabel.setBounds(150, 165, 75, 14);
+		mainFrame.getContentPane().add(trainerUserLabel);
 		
 		JLabel loginButton = new JLabel("");
 		loginButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				
+				attemptLogin();
 			}
 		});
-		loginButton.setIcon(new ImageIcon(main.class.getResource("/images/login_ico.png")));
-		loginButton.setBounds(149, 246, 48, 48);
-		getContentPane().add(loginButton);
+		loginButton.setIcon(new ImageIcon(main.class.getResource("/images/login.png")));
+		loginButton.setBounds(218, 296, 48, 48);
+		mainFrame.getContentPane().add(loginButton);
 		
 		JLabel lblLogin = new JLabel("Login");
-		lblLogin.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		lblLogin.setBounds(159, 291, 39, 20);
-		getContentPane().add(lblLogin);
+		lblLogin.setFont(new Font("Cambria Math", Font.PLAIN, 12));
+		lblLogin.setBounds(227, 346, 39, 15);
+		mainFrame.getContentPane().add(lblLogin);
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(main.class.getResource("/images/logo.png")));
-		lblLogo.setBounds(77, 0, 200, 173);
-		getContentPane().add(lblLogo);
-	}
+		lblLogo.setBounds(100, 5, 200, 173);
+		mainFrame.getContentPane().add(lblLogo);
+		
+		
+		
+		errorText.setFont(new Font("Cambria Math", Font.PLAIN, 13));
+		errorText.setBackground(new java.awt.Color(0, 0, 0));
+		errorText.setForeground(new Color(255, 75, 0));
+		
 
-	public static void main(String[] args) {
+		mainFrame.getContentPane().add(errorText);
+		
+		
+		JLabel signUpButton = new JLabel("");
+		signUpButton.setIcon(new ImageIcon(main.class.getResource("/images/signup2.png")));
+		signUpButton.setBounds(135, 296, 55, 48);
+		mainFrame.getContentPane().add(signUpButton);
+		
+		JLabel SignupButtonLabel = new JLabel("Signup");
+		SignupButtonLabel.setBounds(131, 346, 70, 15);
+		SignupButtonLabel.setFont(new Font("Cambria Math", Font.PLAIN, 12));
+		SignupButtonLabel.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				
+				///* CODE TO BRING UP ACCT REGISTRATION WINDOW *\\\\ 
+				}
+		});
+		
+		
+		forgottenPW.setFont(new Font("Cambria Math", Font.PLAIN, 13));
+		forgottenPW.setBackground(new java.awt.Color(0, 0, 0));
+		forgottenPW.setForeground(new Color(255, 75, 0));
+		forgottenPW.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				
+				///* CODE TO BRING UP FORGOT PW WINDOW *\\\\ 
+				}
+		});
+		mainFrame.getContentPane().add(forgottenPW);
 		
 		
 		
 		
-
+		mainFrame.getContentPane().add(SignupButtonLabel);
+		mainFrame.pack();
+		mainFrame.setVisible(true);
+		
+		}
+		
+	
+	private static void attemptLogin()
+	{
+		errorText.setVisible(false); // get rid of previous error message
+		if(forgottenPW.isVisible())
+		{
+			forgottenPW.setVisible(false);
+		}
+		
+		
+		if(trainerUser.getText().length() <= 0)
+		{
+			errorText.setText("Please enter a username.");
+			errorText.setBounds(150, 250, 200, 15);
+			errorText.setVisible(true);
+		}
+		else if(trainerPass.getPassword().length <= 0)
+		{
+			errorText.setText("Please enter your password.");
+			errorText.setBounds(150, 250, 200, 15);
+			forgottenPW.setText("Forgotten password? Click here!");
+			forgottenPW.setBounds(150, 265, 210, 15);
+			errorText.setVisible(true);
+			forgottenPW.setVisible(true);
+		}
+		else
+		{
+			//code to login
+		}
 	}
 }

@@ -97,7 +97,7 @@ public class mainView extends JFrame {
 		signUpButton.addMouseListener(new MouseAdapter() { 
 			public void mousePressed(MouseEvent e)
 			{
-				//** ADD CODE TO OPEN REGISTRATION WINDOW **//
+				acctRegister ar = new acctRegister();
 		
 			}
 		});
@@ -156,7 +156,7 @@ public class mainView extends JFrame {
 			//code to login
 			// test sql method //
 			sqlMethods sql = new sqlMethods();
-			sql.ConnectToDB();
+			sql.attemptLogin(trainerUser.getText(), new String(trainerPass.getPassword()));
 		}
 	}
 }

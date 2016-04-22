@@ -4,18 +4,25 @@ import java.awt.Dimension;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Label;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
 public class lostPass extends JFrame {
 	private JTextField emailField;
 	public lostPass() {
-	 	setTitle("MetabolixLite");
+	 	setTitle("MetabolixLite: Lost Password");
 
 		getContentPane().setBackground(new Color(255, 235, 205));
 		getContentPane().setLayout(null);
@@ -50,4 +57,22 @@ public class lostPass extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	}
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		}
+				);
+	}	
 }

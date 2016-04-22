@@ -19,19 +19,19 @@ public class acctRegister extends JFrame {
 		initFrame();
 	}
 	private void initFrame() {
-		JFrame mainFrame = new JFrame();
+		final JFrame mainFrame = new JFrame();
 		mainFrame.setTitle("MetabolixLite: Account Creation");
 		mainFrame.getContentPane().setBackground(new Color(255, 235, 205));
 		mainFrame.getContentPane().setLayout(null);
 		mainFrame.setPreferredSize(new Dimension(350, 350));
 		JLabel logoLabel = new JLabel("");
 		logoLabel.setIcon(new ImageIcon(acctRegister.class.getResource("/images/logo.png")));
-		logoLabel.setBounds(106, 0, 185, 180);
+		logoLabel.setBounds(76, 0, 185, 180);
 		mainFrame.getContentPane().add(logoLabel);
 		
-		JLabel lblUsername = new JLabel("Username");
+		JLabel lblUsername = new JLabel("Username:");
 		lblUsername.setFont(new Font("Cambria Math", Font.PLAIN, 13));
-		lblUsername.setBounds(86, 172, 56, 21);
+		lblUsername.setBounds(86, 172, 66, 21);
 		mainFrame.getContentPane().add(lblUsername);
 		
 		userNameInput = new JTextField();
@@ -40,10 +40,10 @@ public class acctRegister extends JFrame {
 		mainFrame.getContentPane().add(userNameInput);
 		userNameInput.setColumns(10);
 		
-		JLabel lblPassword = new JLabel("Password");
+		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setLabelFor(lblPassword);
 		lblPassword.setFont(new Font("Cambria Math", Font.PLAIN, 13));
-		lblPassword.setBounds(86, 210, 56, 14);
+		lblPassword.setBounds(86, 210, 66, 14);
 		mainFrame.getContentPane().add(lblPassword);
 		
 		passwordInput = new JTextField();
@@ -51,7 +51,7 @@ public class acctRegister extends JFrame {
 		mainFrame.getContentPane().add(passwordInput);
 		passwordInput.setColumns(10);
 		
-		JLabel errorText = new JLabel("");
+		final JLabel errorText = new JLabel("");
 		errorText.setForeground(new Color(255, 0, 0));
 		errorText.setBounds(291, 176, 46, 14);
 		mainFrame.getContentPane().add(errorText);
@@ -62,9 +62,9 @@ public class acctRegister extends JFrame {
 		mainFrame.getContentPane().add(emailInput);
 		emailInput.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Email");
+		JLabel lblNewLabel = new JLabel("Email:");
 		lblNewLabel.setFont(new Font("Cambria Math", Font.PLAIN, 13));
-		lblNewLabel.setBounds(86, 241, 46, 14);
+		lblNewLabel.setBounds(96, 241, 46, 14);
 		mainFrame.getContentPane().add(lblNewLabel);
 		
 		JButton signUpButton = new JButton("Signup");
@@ -101,7 +101,7 @@ public class acctRegister extends JFrame {
 				}
 			}
 		});
-		signUpButton.setBounds(152, 271, 109, 23);
+		signUpButton.setBounds(127, 270, 109, 23);
 		mainFrame.getContentPane().add(signUpButton);
 		mainFrame.pack();
 		mainFrame.setLocationRelativeTo(null);

@@ -14,6 +14,8 @@ import java.awt.Dimension;
 
 
 public class mainView extends JFrame {
+	public mainView() {
+	}
 
 
 	private static JTextField trainerUser;
@@ -127,8 +129,7 @@ public class mainView extends JFrame {
 
 	};
 	
-	private static void attemptLogin()
-	{
+	private static void attemptLogin(){ // text box must be centered - tzvi
 		errorText.setVisible(false); // get rid of previous error message
 		if(forgottenPW.isVisible())
 		{

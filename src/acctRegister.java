@@ -23,7 +23,7 @@ public class acctRegister extends JFrame {
 		mainFrame.setTitle("MetabolixLite: Account Creation");
 		mainFrame.getContentPane().setBackground(new Color(255, 235, 205));
 		mainFrame.getContentPane().setLayout(null);
-		mainFrame.setPreferredSize(new Dimension(350, 350));
+		mainFrame.setPreferredSize(new Dimension(350, 370));
 		JLabel logoLabel = new JLabel("");
 		logoLabel.setIcon(new ImageIcon(acctRegister.class.getResource("/images/logo.png")));
 		logoLabel.setBounds(76, 0, 185, 180);
@@ -53,7 +53,7 @@ public class acctRegister extends JFrame {
 		
 		final JLabel errorText = new JLabel("");
 		errorText.setForeground(new Color(255, 0, 0));
-		errorText.setBounds(291, 176, 46, 14);
+		errorText.setBounds(122, 270, 124, 14);
 		mainFrame.getContentPane().add(errorText);
 		
 		
@@ -101,7 +101,7 @@ public class acctRegister extends JFrame {
 				}
 			}
 		});
-		signUpButton.setBounds(127, 270, 109, 23);
+		signUpButton.setBounds(122, 298, 109, 23);
 		mainFrame.getContentPane().add(signUpButton);
 		mainFrame.pack();
 		mainFrame.setLocationRelativeTo(null);

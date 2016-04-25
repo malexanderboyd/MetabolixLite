@@ -51,7 +51,7 @@ public class lostPass extends JFrame {
 		
 		Label message = new Label("Enter your email, so we can send you your password.");
 		message.setFont(new Font("Dialog", Font.PLAIN, 15));
-		message.setBounds(20, 188, 400, 20);
+		message.setBounds(47, 188, 362, 20);
 		getContentPane().add(message);
 		setPreferredSize(new Dimension(450,350));
 		pack();

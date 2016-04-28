@@ -12,6 +12,8 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JCheckBox;
 import javax.swing.JTextPane;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class clientMain extends JFrame{
@@ -41,6 +43,16 @@ public class clientMain extends JFrame{
 		getContentPane().add(TrainerOption);
 		
 		JButton changepass = new JButton("Change Password");
+		changepass.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				//System.out.println("ChangePassword has been clicked");
+				//display passRest.java view!!
+				passRest ps = new passRest();
+				ps.setBounds(400, 400, 400, 400);
+				ps.setVisible(true);
+			}
+		});
 		changepass.setBounds(241, 118, 119, 23);
 		getContentPane().add(changepass);
 		

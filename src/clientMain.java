@@ -60,10 +60,10 @@ public class clientMain extends JFrame{
 		getContentPane().add(form);
 		
 		JTextPane txt = new JTextPane();
-		txt.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txt.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		txt.setBackground(new Color(255, 235, 205));
 		txt.setText("For conditioning programs and meal plans, please visit our website at metabolix.net.");
-		txt.setBounds(23, 309, 352, 54);
+		txt.setBounds(10, 339, 384, 22);
 		getContentPane().add(txt);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -72,8 +72,12 @@ public class clientMain extends JFrame{
 		getContentPane().add(lblNewLabel);
 		
 		JLabel trainerVar = new JLabel("");
-		trainerVar.setBounds(363, 0, 46, 14);
+		trainerVar.setBounds(338, 0, 46, 14);
 		getContentPane().add(trainerVar);
+		
+		JButton btnNewButton = new JButton("Add New Client");
+		btnNewButton.setBounds(150, 309, 105, 23);
+		getContentPane().add(btnNewButton);
 		setTitle("MetabolixLite: Trainer Panel");
 	}
 }

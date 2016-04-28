@@ -28,7 +28,7 @@ public class client extends JFrame{
 	getContentPane().setLayout(null);
 	
 	JScrollPane mealPlan = new JScrollPane();
-	mealPlan.setBounds(12, 377, 414, 71);
+	mealPlan.setBounds(120, 377, 414, 71);
 	getContentPane().add(mealPlan);
 	
 	table_2 = new JTable();

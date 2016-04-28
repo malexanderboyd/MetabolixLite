@@ -6,6 +6,8 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
+
+//no longer used
 public class passRest extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;

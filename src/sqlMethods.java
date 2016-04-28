@@ -157,4 +157,71 @@ private boolean checkUserExists(String username) {
 		return hash.toString();
 	}
 
+
+	public ResultSet getClientWeekData(int clientID) {
+
+		java.sql.Connection conn = null;
+		try {
+		conn = DriverManager.getConnection(connect_URL, userName, this.password);
+		
+		String signupQuery = "SELECT * FROM Client WHERE Client_ID = ?";
+		
+		PreparedStatement preparedStmt = conn.prepareStatement(signupQuery);
+		preparedStmt.setInt(1, clientID);
+		
+		ResultSet rs = preparedStmt.executeQuery();
+
+			conn.close();
+			return rs;
+
+		} catch(SQLException sqlE) {
+			sqlE.printStackTrace();
+			return null;
+		}
+	}
+
+
+	public ResultSet getClientSkinData(int clientID) {
+		java.sql.Connection conn = null;
+		try {
+		conn = DriverManager.getConnection(connect_URL, userName, this.password);
+		
+		String signupQuery = "SELECT * FROM Skinfold WHERE C_IDs = ?";
+		
+		PreparedStatement preparedStmt = conn.prepareStatement(signupQuery);
+		preparedStmt.setInt(1, clientID);
+		
+		ResultSet rs = preparedStmt.executeQuery();
+
+			conn.close();
+			return rs;
+
+		} catch(SQLException sqlE) {
+			sqlE.printStackTrace();
+			return null;
+		}
+	}
+
+
+	public ResultSet getClientGirthData(int clientID) {
+		java.sql.Connection conn = null;
+		try {
+		conn = DriverManager.getConnection(connect_URL, userName, this.password);
+		
+		String signupQuery = "SELECT * FROM Girth WHERE C_IDg = ?";
+		
+		PreparedStatement preparedStmt = conn.prepareStatement(signupQuery);
+		preparedStmt.setInt(1, clientID);
+		
+		ResultSet rs = preparedStmt.executeQuery();
+
+			conn.close();
+			return rs;
+
+		} catch(SQLException sqlE) {
+			sqlE.printStackTrace();
+			return null;
+		}
+	}
+
 } // end of class

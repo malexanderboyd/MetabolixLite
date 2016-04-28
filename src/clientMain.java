@@ -1,19 +1,17 @@
 import java.awt.Color;
 import java.awt.Dimension;
-
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JTable;
-import java.awt.Label;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JCheckBox;
-import javax.swing.JTextPane;
 import java.awt.Font;
+import java.awt.Label;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextPane;
 
 
 public class clientMain extends JFrame{
@@ -26,7 +24,7 @@ public class clientMain extends JFrame{
 		getContentPane().setLayout(null);
 		
 		JScrollPane clientTable = new JScrollPane();
-		clientTable.setBounds(23, 44, 167, 254);
+		clientTable.setBounds(10, 44, 374, 254);
 		getContentPane().add(clientTable);
 		
 		clientSQL = new JTable();
@@ -34,8 +32,9 @@ public class clientMain extends JFrame{
 		
 		Label client = new Label("Your Clients");
 		client.setAlignment(Label.CENTER);
-		client.setBounds(63, 16, 82, 22);
+		client.setBounds(165, 10, 82, 22);
 		getContentPane().add(client);
+
 		
 		// not sure about trainer layout, needs to be adjusted just not sure how
 		JLabel TrainerOption = new JLabel("Trainer Options"); 
@@ -64,8 +63,17 @@ public class clientMain extends JFrame{
 		txt.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txt.setBackground(new Color(255, 235, 205));
 		txt.setText("For conditioning programs and meal plans, please visit our website at metabolix.net.");
-		txt.setBounds(219, 214, 180, 63);
+		txt.setBounds(23, 309, 352, 54);
 		getContentPane().add(txt);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(clientMain.class.getResource("/images/small_logo.png")));
+		lblNewLabel.setBounds(0, 0, 38, 33);
+		getContentPane().add(lblNewLabel);
+		
+		JLabel trainerVar = new JLabel("");
+		trainerVar.setBounds(363, 0, 46, 14);
+		getContentPane().add(trainerVar);
 		setTitle("MetabolixLite: Trainer Panel");
 	}
 }

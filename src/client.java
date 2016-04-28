@@ -50,7 +50,11 @@ public class client extends JFrame{
 	getContentPane().add(lblMealPlan);
 	
 	JButton btnNewButton = new JButton("New Week");
-	btnNewButton.setBounds(168, 11, 89, 23);
+	btnNewButton.setBounds(106, 11, 89, 23);
 	getContentPane().add(btnNewButton);
+	
+	JButton btnSendForms = new JButton("Send Forms");
+	btnSendForms.setBounds(232, 11, 89, 23);
+	getContentPane().add(btnSendForms);
 	}
 }

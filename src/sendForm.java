@@ -1,5 +1,4 @@
 import java.awt.Color;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -10,27 +9,17 @@ import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
 public class sendForm extends JFrame{
-	private JTextField email;
 	public sendForm() {
 		getContentPane().setBackground(new Color(255, 235, 205));
 		getContentPane().setLayout(null);
 		
-		JButton submit = new JButton("Submit");
-		submit.setBounds(130, 280, 89, 23);
+		JButton submit = new JButton("Send");
+		submit.setBounds(123, 249, 89, 23);
 		getContentPane().add(submit);
-		
-		email = new JTextField();
-		email.setBounds(120, 249, 120, 20);
-		getContentPane().add(email);
-		email.setColumns(10);
 		
 		JLabel label = new JLabel("Please select desired forms and enter email address of recipient.");
 		label.setBounds(29, 168, 330, 20);
 		getContentPane().add(label);
-		
-		JLabel lblNewLabel_1 = new JLabel("Email:");
-		lblNewLabel_1.setBounds(83, 252, 35, 14);
-		getContentPane().add(lblNewLabel_1);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Health Questionnaire");
 		chckbxNewCheckBox.setBackground(new Color(255, 235, 205));

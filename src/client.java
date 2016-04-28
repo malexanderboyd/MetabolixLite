@@ -76,6 +76,8 @@ public class client extends JFrame{
 	weekTable.setModel(weekTableModel);
 	scrollPane.setViewportView(weekTable);
 	
+	
+	
 	pack();
 	updateTables();
 	repaint();
@@ -215,10 +217,7 @@ public class client extends JFrame{
 
 
 
-	
-	JButton btnSendForms = new JButton("Send Forms");
-	btnSendForms.setBounds(232, 11, 89, 23);
-	getContentPane().add(btnSendForms);
+
 	}
 	private void setupTables()
 	{

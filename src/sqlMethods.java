@@ -12,24 +12,34 @@ public class sqlMethods {
 	private static String password = "Cosc*4h4p";
 	private static final String SALT = "tacos4lyfe"; */
 	
-	private static String hostName = "localhost";
-	private static int port = 3306;
-	private static String database = "jobsdb";
-	private static String userName = "root";
-	private static String password = "password";
+	private static String hostName = "triton.towson.edu";
+	private static int port = 3360;
+	private static String database = "msanto7db";
+	private static String userName = "msanto7";
+	private static String password = "Cosc*8adm";
 	private static final String SALT = "tacos4lyfe";
 	
-	
+	/*
+	 *  Database Tables 
+	 * 	Client(Client_ID, Client_Fname, Client_Lname, Client_Age, Date_Entered, Height, Weight, Trainer_Uname)
+	 *	Client_Assessment_Form (C_ID, Liability_Waiver, Environmental_Inventory, Health_History_Questionnaire)
+	 *	Girth(G_date, MidAx, Subscap, Triceps, Kidney, Supra, G_Chest, G_Thigh, G_Abdom, C_IDg)
+	 *	Skinfold(S_Date, Arm, Waist, Calf, Hips, S_Thigh, Neck, S_Chest, S_Abdom, C_IDs)
+	 *	Trainer(T_Uname, password, email)
+	 * 
+	 * 
+	 * 
+	 */
 
-	private static String connect_URL = "jdbc:mysql://" + hostName + ":" + port + "/" + database + "?useSSL=false";
+	private static String connect_URL = "jdbc:mysql://" + hostName + ":" + port + "/" + database;
 
-	public void attemptLogin(String username, String password)
+	public Boolean attemptLogin(String username, String password)
 	{
 		java.sql.Connection conn = null;
 		try {
 		conn = DriverManager.getConnection(connect_URL, userName, this.password);
 		
-		String signupQuery = "SELECT password FROM trainers WHERE username = ?";
+		String signupQuery = "SELECT password FROM Trainer WHERE T_Uname = ?";
 		
 		PreparedStatement preparedStmt = conn.prepareStatement(signupQuery);
 		preparedStmt.setString(1, username);
@@ -52,12 +62,12 @@ public class sqlMethods {
 		
 		
 			conn.close();
-
+			return true;
 
 		} catch(SQLException sqlE) {
 			sqlE.printStackTrace();
+			return false;
 		}
-
 
 	}
 	
@@ -71,7 +81,7 @@ public class sqlMethods {
 			try {
 				conn = DriverManager.getConnection(connect_URL, userName, this.password);
 
-				String signupQuery = "insert into trainers (username, password, email) values (?, ?, ?)";
+				String signupQuery = "insert into Trainer (T_Uname, password, email) values (?, ?, ?)";
 
 				PreparedStatement preparedStmt = conn.prepareStatement(signupQuery);
 				preparedStmt.setString(1, username);
@@ -99,7 +109,7 @@ private boolean checkUserExists(String username) {
 	try {
 	conn = DriverManager.getConnection(connect_URL, userName, this.password);
 	
-	String signupQuery = "SELECT * FROM trainers WHERE username = ?";
+	String signupQuery = "SELECT * FROM Trainer WHERE T_Uname = ?";
 	
 	PreparedStatement preparedStmt = conn.prepareStatement(signupQuery);
 	preparedStmt.setString(1, username);

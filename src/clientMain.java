@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -16,6 +17,9 @@ import java.awt.Font;
 public class clientMain extends JFrame{
 	private JTable clientSQL;
 	public clientMain() {
+		setMinimumSize(new Dimension(400, 400));
+		setMaximumSize(new Dimension(400, 400));
+		setResizable(false);
 		getContentPane().setBackground(new Color(255, 235, 205));
 		getContentPane().setLayout(null);
 		

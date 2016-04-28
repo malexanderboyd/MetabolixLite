@@ -128,6 +128,8 @@ public class mainView extends JFrame {
 		mainFrame.setLocationRelativeTo(null);
 
 	};
+
+	
 	
 	private static void attemptLogin(){ // text box must be centered - tzvi
 		errorText.setVisible(false); // get rid of previous error message
@@ -157,7 +159,13 @@ public class mainView extends JFrame {
 			//code to login
 			// test sql method //
 			sqlMethods sql = new sqlMethods();
-			sql.attemptLogin(trainerUser.getText(), new String(trainerPass.getPassword()));
+			if(sql.attemptLogin(trainerUser.getText(), new String(trainerPass.getPassword()))) // user successfully logged in
+			{
+				System.out.println("success");
+				clientMain cm = new clientMain();
+				cm.setVisible(true);
+		
+			}
 		}
 	}
 }

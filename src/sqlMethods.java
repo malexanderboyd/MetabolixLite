@@ -253,24 +253,47 @@ private boolean checkUserExists(String username) {
 		}
 	}
 	
-	public void resetPass(String email, String pass) {
+	public ResultSet getClientEmail(int clientID) {
 		java.sql.Connection conn = null;
 		try {
-			conn = DriverManager.getConnection(connect_URL, userName, this.password);
-
-			String resetPass = "UPDATE Trainer SET password = ? WHERE email= ?";
-
-			PreparedStatement preparedStmt = conn.prepareStatement(resetPass);
-			preparedStmt.setString(1, pass);
-			preparedStmt.setString(2, email);
-
-			preparedStmt.executeUpdate();
+		conn = DriverManager.getConnection(connect_URL, userName, this.password);
+		
+		String signupQuery = "SELECT Client_email FROM Client WHERE Client_ID = ?";
+		
+		PreparedStatement preparedStmt = conn.prepareStatement(signupQuery);
+		preparedStmt.setInt(1, clientID);
+		
+		ResultSet rs = preparedStmt.executeQuery();
 
 			conn.close();
+			return rs;
 
 		} catch(SQLException sqlE) {
 			sqlE.printStackTrace();
+			return null;
 		}
-	}	
+	}
+	
+	public ResultSet resetPass(String email, String pass) {
+		java.sql.Connection conn = null;
+		try {
+		conn = DriverManager.getConnection(connect_URL, userName, this.password);
+		
+		String resetPass = "UPDATE Trainer SET password = ? WHERE email= ?";
+		
+		PreparedStatement preparedStmt = conn.prepareStatement(resetPass);
+		preparedStmt.setString(1, pass);
+		preparedStmt.setString(2, email);
+	
+		ResultSet rs = preparedStmt.executeQuery();
+
+			conn.close();
+			return rs;
+
+		} catch(SQLException sqlE) {
+			sqlE.printStackTrace();
+			return null;
+		}
+	}
 
 } // end of class

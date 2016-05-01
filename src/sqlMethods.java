@@ -72,7 +72,7 @@ public class sqlMethods {
 	}
 	
 	//send client info to DB
-	public Boolean attemptNewClient2(String name, Integer age, String date, Integer height, Integer weight) {
+	public Boolean attemptNewClient2(String name, Integer age, String date, Integer height, Integer weight, Float midax, Float subscap, Float triceps, Float kidney, Float supra, Float gchest, Float gthigh, Float gabdom) {
 		
 		java.sql.Connection conn = null;
 		try {
@@ -84,6 +84,8 @@ public class sqlMethods {
 		
 		Statement st = conn.createStatement();
 		st.executeUpdate("insert into Client (Client_name, Client_Age, Date_Entered, Height, Weight) VALUES('" + name + "', '"+ age +"', '"+ date + "', '"+ height +"', '"+ weight +"')");
+		
+		st.executeUpdate("insert into Girth (G_date, MidAx, Subscap, Triceps, Kidney, Supra, G_Chest, G_Thigh, G_Abdom, C_IDg) VALUES('"+ date + "', '"+ midax +"', '"+ subscap+"', '"+ triceps +"', '"+ kidney +"', '"+ supra +"', '"+ gchest +"', '"+ gthigh +"', '"+ gabdom +"', '"+ 5 +"')");                                                   
 		
 		//ResultSet rs = preparedStmt.executeUpdate();
 		//String retrievedpw = "n/a";

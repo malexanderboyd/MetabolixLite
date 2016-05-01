@@ -17,22 +17,22 @@ public class newClient extends JFrame{
 	private static JTextField age;
 	private static JTextField textField_4;
 	private static JTextField textField_5;
-	private JTextField subscap;
-	private JTextField tricepts;
-	private JTextField midAx;
-	private JTextField kidney;
-	private JTextField Abdom_f;
-	private JTextField supra;
-	private JTextField chest_f;
-	private JTextField thights_f;
-	private JTextField neck;
-	private JTextField chest_g;
-	private JTextField arms;
-	private JTextField waist;
-	private JTextField abdom_g;
-	private JTextField hips;
-	private JTextField thighs_g;
-	private JTextField calfs;
+	private static JTextField subscap;
+	private static JTextField tricepts;
+	private static JTextField midAx;
+	private static JTextField kidney;
+	private static JTextField Abdom_f;
+	private static JTextField supra;
+	private static JTextField chest_f;
+	private static JTextField thighs_f;
+	private static JTextField neck;
+	private static JTextField chest_g;
+	private static JTextField arms;
+	private static JTextField waist;
+	private static JTextField abdom_g;
+	private static JTextField hips;
+	private static JTextField thighs_g;
+	private static JTextField calfs;
 	public newClient() {
 		setTitle("MetabolixLite: Client Register");
 		getContentPane().setBackground(new Color(255, 235, 205));
@@ -105,12 +105,12 @@ public class newClient extends JFrame{
 		lowerTitle.setBounds(152, 157, 137, 22);
 		getContentPane().add(lowerTitle);
 		
-		Label foldHead = new Label("Skin Folds");
+		Label foldHead = new Label("Girth");
 		foldHead.setAlignment(Label.CENTER);
 		foldHead.setBounds(75, 185, 62, 22);
 		getContentPane().add(foldHead);
 		
-		Label label_6 = new Label("Girth");
+		Label label_6 = new Label("Skin Folds");
 		label_6.setAlignment(Label.CENTER);
 		label_6.setBounds(265, 185, 62, 22);
 		getContentPane().add(label_6);
@@ -169,14 +169,14 @@ public class newClient extends JFrame{
 		Abdom_f.setBounds(100, 369, 76, 20);
 		getContentPane().add(Abdom_f);
 		
-		JLabel lblThight = new JLabel("Thights:\r\n");
+		JLabel lblThight = new JLabel("Thighs:\r\n");
 		lblThight.setBounds(44, 403, 66, 14);
 		getContentPane().add(lblThight);
 		
-		thights_f = new JTextField();
-		thights_f.setColumns(10);
-		thights_f.setBounds(100, 400, 76, 20);
-		getContentPane().add(thights_f);
+		thighs_f = new JTextField();
+		thighs_f.setColumns(10);
+		thighs_f.setBounds(100, 400, 76, 20);
+		getContentPane().add(thighs_f);
 		
 		JLabel lblChest = new JLabel("Chest:");
 		lblChest.setBounds(44, 434, 66, 14);
@@ -241,7 +241,7 @@ public class newClient extends JFrame{
 		hips.setBounds(294, 369, 76, 20);
 		getContentPane().add(hips);
 		
-		JLabel lblThights = new JLabel("Thights:");
+		JLabel lblThights = new JLabel("Thighs:");
 		lblThights.setBounds(246, 403, 48, 14);
 		getContentPane().add(lblThights);
 		
@@ -280,7 +280,7 @@ public class newClient extends JFrame{
 		
 			//code to send to DB
 			sqlMethods sql = new sqlMethods();
-			if(sql.attemptNewClient2(new String(name.getText()), new Integer(age.getText()), new String(date.getText()), new Integer(textField_4.getText()), new Integer(textField_5.getText()))) // user successfully logged in
+			if(sql.attemptNewClient2(new String(name.getText()), new Integer(age.getText()), new String(date.getText()), new Integer(textField_4.getText()), new Integer(textField_5.getText()), new Float(midAx.getText()), new Float(subscap.getText()), new Float(tricepts.getText()), new Float(kidney.getText()), new Float(supra.getText()), new Float(chest_f.getText()), new Float(thighs_f.getText()), new Float(Abdom_f.getText()) ))                                                                 
 			{
 				System.out.println("success");
 				//clientMain cm = new clientMain();

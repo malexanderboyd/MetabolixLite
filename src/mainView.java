@@ -162,7 +162,8 @@ public class mainView extends JFrame {
 			if(sql.attemptLogin(trainerUser.getText(), new String(trainerPass.getPassword()))) // user successfully logged in
 			{
 				System.out.println("success");
-				clientMain cm = new clientMain();
+				String username = trainerUser.getText();
+				clientMain cm = new clientMain(username);
 				cm.setVisible(true);
 		
 			}

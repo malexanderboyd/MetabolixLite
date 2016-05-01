@@ -4,6 +4,10 @@ import java.awt.Font;
 import java.awt.Label;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,13 +16,21 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
+import javax.swing.table.DefaultTableModel;
 
 
 public class clientMain extends JFrame{
 	private JTable clientSQL;
-	public clientMain() {
-		setMinimumSize(new Dimension(400, 400));
-		setMaximumSize(new Dimension(400, 400));
+	private final String trainer;	
+	public clientMain(String trainerUsername) {
+		
+		trainer = trainerUsername;
+		clientIds = new ArrayList<Integer>();
+		
+		setupTable();
+		getClients(trainer);
+		setMinimumSize(new Dimension(400, 415));
+		setMaximumSize(new Dimension(400, 415));
 		setResizable(false);
 		getContentPane().setBackground(new Color(255, 235, 205));
 		getContentPane().setLayout(null);
@@ -28,6 +40,20 @@ public class clientMain extends JFrame{
 		getContentPane().add(clientTable);
 		
 		clientSQL = new JTable();
+		clientSQL.setModel(clientTableModel);
+		clientSQL.addMouseListener(new MouseAdapter() {
+			
+			public void mouseReleased(MouseEvent e) {
+				int rowindex = clientSQL.getSelectedRow();
+				Integer clientId = clientIds.get(rowindex);
+				
+				client c = new client(clientId);
+				c.setVisible(true);
+			}
+			
+			
+			
+		});
 		clientTable.setViewportView(clientSQL);
 		
 		Label client = new Label("Your Clients");
@@ -55,15 +81,11 @@ public class clientMain extends JFrame{
 		changepass.setBounds(241, 118, 119, 23);
 		getContentPane().add(changepass);
 		
-		JButton form = new JButton("Send Forms");
-		form.setBounds(241, 163, 119, 23);
-		getContentPane().add(form);
-		
 		JTextPane txt = new JTextPane();
 		txt.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		txt.setBackground(new Color(255, 235, 205));
 		txt.setText("For conditioning programs and meal plans, please visit our website at metabolix.net.");
-		txt.setBounds(10, 339, 384, 22);
+		txt.setBounds(10, 339, 384, 30);
 		getContentPane().add(txt);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -84,8 +106,66 @@ public class clientMain extends JFrame{
 				nc.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(150, 309, 105, 23);
+		btnNewButton.setBounds(150, 309, 145, 24);
 		getContentPane().add(btnNewButton);
 		setTitle("MetabolixLite: Trainer Panel");
 	}
+	
+	
+	
+	private void getClients(final String trainer) {
+		
+		try {
+				sqlMethods sql = new sqlMethods();
+				ResultSet res;
+				
+				res = sql.getTrainerClients(trainer);
+				while(res.next())
+				{
+				
+					clientIds.add(res.getInt(1));
+					String name = res.getString(2);
+					
+					clientTableModel.addRow(new Object[] { name } );
+				}
+			} catch(SQLException e)
+		{
+				e.printStackTrace();
+		}
+	}
+
+
+
+	private void setupTable()
+	{
+		//Client(Client_ID, Client_Fname, Client_Lname, Client_Age, Date_Entered, Height, Weight, Trainer_Uname)
+		
+		/*
+		 * 
+		 *  weekly data table
+		 */
+		clientTableModel = new DefaultTableModel() {
+			Class[] columnTypes = new Class[] {
+					Object.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			public boolean isCellEditable(int row, int column) {
+			       //all cells false
+			       return false;
+			    }
+		};
+		clientTableModel.setColumnCount(1);
+		clientTableModel.setColumnIdentifiers(new String[] {
+				"Name"
+		});
+		
+
+	}
+	
+	
+	
+private DefaultTableModel clientTableModel;	
+private ArrayList<Integer> clientIds;
 }

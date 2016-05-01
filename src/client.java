@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.sql.Date;
 import java.sql.ResultSet;
 
@@ -77,7 +78,7 @@ public class client extends JFrame{
 	scrollPane.setViewportView(weekTable);
 	
 	
-	
+	setPreferredSize(new Dimension(650,650));
 	pack();
 	updateTables();
 	repaint();
@@ -98,24 +99,24 @@ public class client extends JFrame{
 			{
 				try {
 					sqlMethods sql = new sqlMethods();
-					ResultSet queryResult;
+					ResultSet queryResult1;
 					
-					queryResult = sql.getClientWeekData(ClientID);
+					queryResult1 = sql.getClientWeekData(ClientID);
 					
-					while(queryResult.next())
+					while(queryResult1.next())
 					{
 
-							String name = queryResult.getString(2) + queryResult.getString(3);
-							int age = queryResult.getInt(4);
-							Date date = queryResult.getDate(5);		
-							int ht = queryResult.getInt(6);
-							int wt = queryResult.getInt(7);
+							String name = queryResult1.getString(2) + queryResult1.getString(3);
+							int age = queryResult1.getInt(4);
+							Date date = queryResult1.getDate(5);		
+							int ht = queryResult1.getInt(6);
+							int wt = queryResult1.getInt(7);
 							
 							weekTableModel.addRow(new Object[] { date, name, age, ht, wt });
 					}
 					//Client(Client_ID, Client_Fname, Client_Lname, Client_Age, Date_Entered (date), Height (int), Weight(int), Trainer_Uname)
 
-
+					queryResult1.close();
 				} catch(Exception e)
 				{
 					e.printStackTrace();
@@ -136,24 +137,26 @@ public class client extends JFrame{
 			{
 				try {
 					sqlMethods sql = new sqlMethods();
-					ResultSet queryResult;
+					ResultSet queryResult2;
 					
-					queryResult = sql.getClientSkinData(ClientID);
+					queryResult2 = sql.getClientSkinData(ClientID);
 					
-					while(queryResult.next())
+					while(queryResult2.next())
 					{
 						//Skinfold(S_Date, Arm, Waist, Calf, Hips, S_Thigh, Neck, S_Chest, S_Abdom, C_IDs)
-							Date date = queryResult.getDate(1);		
-							float arm = queryResult.getFloat(2);
-							float waist = queryResult.getFloat(3);
-							float calf = queryResult.getFloat(4);
-							float hips = queryResult.getFloat(5);
-							float thigh = queryResult.getFloat(6);
-							float neck = queryResult.getFloat(7);
-							float chest = queryResult.getFloat(8);
-							float abdom = queryResult.getFloat(9);
+							Date date = queryResult2.getDate(1);		
+							float arm = queryResult2.getFloat(2);
+							float waist = queryResult2.getFloat(3);
+							float calf = queryResult2.getFloat(4);
+							float hips = queryResult2.getFloat(5);
+							float thigh = queryResult2.getFloat(6);
+							float neck = queryResult2.getFloat(7);
+							float chest = queryResult2.getFloat(8);
+							float abdom = queryResult2.getFloat(9);
 							skinTableModel.addRow(new Object[] { date, arm, waist, calf, hips, thigh, neck, chest, abdom });
 					}
+					
+					queryResult2.close();
 				//Skinfold(S_Date, Arm, Waist, Calf, Hips, S_Thigh, Neck, S_Chest, S_Abdom, C_IDs)
 				//"Date", "Arm", "Waist", "Calf", "Hips", "Thigh", "Neck", "Chest", "Abdom"
 				} catch(Exception e)
@@ -176,26 +179,27 @@ public class client extends JFrame{
 			{
 				try {
 					sqlMethods sql = new sqlMethods();
-					ResultSet queryResult;
+					ResultSet queryResult3;
 					
-					queryResult = sql.getClientGirthData(ClientID);
+					queryResult3 = sql.getClientGirthData(ClientID);
 					
-					while(queryResult.next())
+					while(queryResult3.next())
 					{
 
-						Date date = queryResult.getDate(1);		
-						float midax = queryResult.getFloat(2);
-						float subscap = queryResult.getFloat(3);
-						float tricep = queryResult.getFloat(4);
-						float kidney = queryResult.getFloat(5);
-						float supra = queryResult.getFloat(6);
-						float chest = queryResult.getFloat(7);
-						float thigh = queryResult.getFloat(8);
-						float abdom = queryResult.getFloat(9);
+						Date date = queryResult3.getDate(1);		
+						float midax = queryResult3.getFloat(2);
+						float subscap = queryResult3.getFloat(3);
+						float tricep = queryResult3.getFloat(4);
+						float kidney = queryResult3.getFloat(5);
+						float supra = queryResult3.getFloat(6);
+						float chest = queryResult3.getFloat(7);
+						float thigh = queryResult3.getFloat(8);
+						float abdom = queryResult3.getFloat(9);
 						girthTableModel.addRow(new Object[] { date, midax, subscap, tricep, kidney, supra, chest, thigh, abdom });
 					}
 					//Girth(G_date, MidAx, Subscap, Triceps, Kidney, Supra, G_Chest, G_Thigh, G_Abdom, C_IDg)
 					//"Date", "Mid Ax", "Subscap", "Triceps", "Kidney", "Supra", "Chest", "Thigh", "Abdom"
+					queryResult3.close();
 				} catch(Exception e)
 				{
 					e.printStackTrace();

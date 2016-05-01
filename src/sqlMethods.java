@@ -60,7 +60,7 @@ public class sqlMethods {
 			////** add code to open manage client window *\\\\\
 		}
 		
-		
+		preparedStmt.close();
 			conn.close();
 			return true;
 
@@ -122,6 +122,7 @@ public class sqlMethods {
 				preparedStmt.setString(2, hashedpw); // store hashed pw in db
 				
 				preparedStmt.executeUpdate();
+				preparedStmt.close();
 				conn.close();
 				return true;
 			} catch(SQLException sqlE) {
@@ -148,11 +149,13 @@ private boolean checkUserExists(String username) {
 	System.out.println(rs.toString());
 	if(!rs.next())
 	{
+		preparedStmt.close();
 		conn.close();
 		return false;
 	}
 	else
 	{
+		preparedStmt.close();
 		conn.close();
 		return true;
 	}
@@ -200,7 +203,6 @@ private boolean checkUserExists(String username) {
 		
 		ResultSet rs = preparedStmt.executeQuery();
 
-			conn.close();
 			return rs;
 
 		} catch(SQLException sqlE) {
@@ -222,7 +224,7 @@ private boolean checkUserExists(String username) {
 		
 		ResultSet rs = preparedStmt.executeQuery();
 
-			conn.close();
+
 			return rs;
 
 		} catch(SQLException sqlE) {
@@ -244,11 +246,36 @@ private boolean checkUserExists(String username) {
 		
 		ResultSet rs = preparedStmt.executeQuery();
 
-			conn.close();
+
 			return rs;
+
 
 		} catch(SQLException sqlE) {
 			sqlE.printStackTrace();
+			return null;
+		}
+	}
+
+	//Client(Client_ID, Client_Fname, Client_Lname, Client_Age, Date_Entered, Height, Weight, Trainer_Uname)
+	public ResultSet getTrainerClients(String trainer)
+	{
+			java.sql.Connection conn = null;
+			try {
+			conn = DriverManager.getConnection(connect_URL, userName, this.password);
+			
+			String signupQuery = "SELECT * FROM Client WHERE Trainer_Uname = ?";
+			
+			PreparedStatement preparedStmt = conn.prepareStatement(signupQuery);
+			preparedStmt.setString(1, trainer);
+			
+			ResultSet rs = preparedStmt.executeQuery();
+			
+			
+			return rs;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
 			return null;
 		}
 	}

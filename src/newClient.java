@@ -282,7 +282,7 @@ public class newClient extends JFrame{
 			sqlMethods sql = new sqlMethods();
 			if(sql.attemptNewClient2(new String(name.getText()), new Integer(age.getText()), new String(date.getText()), new Integer(textField_4.getText()), new Integer(textField_5.getText()), new Float(midAx.getText()), new Float(subscap.getText()), new Float(tricepts.getText()), new Float(kidney.getText()), new Float(supra.getText()), new Float(chest_f.getText()), new Float(thighs_f.getText()), new Float(Abdom_f.getText()) ))                                                                 
 			{
-				System.out.println("success");
+				System.out.println("success - entered new client");
 				//clientMain cm = new clientMain();
 				//cm.setVisible(true);
 		

@@ -252,5 +252,27 @@ private boolean checkUserExists(String username) {
 			return null;
 		}
 	}
+	
+	public ResultSet resetPass(String email, String pass) {
+		java.sql.Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(connect_URL, userName, this.password);
+
+			String resetPass = "UPDATE Trainer SET password = ? WHERE email= ?";
+
+			PreparedStatement preparedStmt = conn.prepareStatement(resetPass);
+			preparedStmt.setString(1, pass);
+			preparedStmt.setString(2, email);
+
+			ResultSet rs = preparedStmt.executeQuery();
+
+			conn.close();
+			return rs;
+
+		} catch(SQLException sqlE) {
+			sqlE.printStackTrace();
+			return null;
+		}
+	}	
 
 } // end of class

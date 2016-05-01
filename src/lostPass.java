@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -11,11 +12,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Label;
 import java.awt.Font;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPopupMenu;
+
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
@@ -40,6 +44,11 @@ public class lostPass extends JFrame {
 		Button submit = new Button("Continue");
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String s = emailField.getText();
+				if (sendEmail(s)) 
+					setVisible(false);
+				else
+					setVisible(false);
 			}
 		});
 		submit.setBounds(185, 261, 92, 22);
@@ -57,5 +66,8 @@ public class lostPass extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	}
-
+	public Boolean sendEmail(String s) {
+		String[] to = new String[] {s};
+		return EmailSender.sendMail("metabolixlite@gmail.com", "password6969", "Your new password is Apple123!", to);
+	}
 }

@@ -12,11 +12,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class newClient extends JFrame{
-	private JTextField date;
+	private static JTextField date;
 	private static JTextField name;
 	private static JTextField age;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private static JTextField textField_4;
+	private static JTextField textField_5;
 	private JTextField subscap;
 	private JTextField tricepts;
 	private JTextField midAx;
@@ -274,10 +274,13 @@ public class newClient extends JFrame{
 		
 		//Method to validate input and send to DB
 		private static void attemptNewClient() {
+			
+			
+			//need to add methods to force insert into all fields....will add this last 
 		
 			//code to send to DB
 			sqlMethods sql = new sqlMethods();
-			if(sql.attemptNewClient2(new String(name.getText()), new Integer(age.getText()))) // user successfully logged in
+			if(sql.attemptNewClient2(new String(name.getText()), new Integer(age.getText()), new String(date.getText()), new Integer(textField_4.getText()), new Integer(textField_5.getText()))) // user successfully logged in
 			{
 				System.out.println("success");
 				//clientMain cm = new clientMain();

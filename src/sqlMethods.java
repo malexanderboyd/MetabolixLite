@@ -72,7 +72,7 @@ public class sqlMethods {
 	}
 	
 	//send client info to DB
-	public Boolean attemptNewClient2(String name, Integer age) {
+	public Boolean attemptNewClient2(String name, Integer age, String date, Integer height, Integer weight) {
 		
 		java.sql.Connection conn = null;
 		try {
@@ -83,7 +83,7 @@ public class sqlMethods {
 		//preparedStmt.setString(1, name);
 		
 		Statement st = conn.createStatement();
-		st.executeUpdate("insert into Client (Client_ID, Client_Fname) VALUES('" + 2 + "', '" + name + "')");
+		st.executeUpdate("insert into Client (Client_name, Client_Age, Date_Entered, Height, Weight) VALUES('" + name + "', '"+ age +"', '"+ date + "', '"+ height +"', '"+ weight +"')");
 		
 		//ResultSet rs = preparedStmt.executeUpdate();
 		//String retrievedpw = "n/a";

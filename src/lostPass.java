@@ -19,6 +19,7 @@ import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
 
 import javax.swing.JTextArea;
 
@@ -45,9 +46,12 @@ public class lostPass extends JFrame {
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s = emailField.getText();
-				if (sendEmail(s)) 
+				sqlMethods sql = new sqlMethods();
+
+				if (sendEmail(s)) {
+					sql.resetPass(s, "Apple123!");
 					setVisible(false);
-				else
+				} else
 					setVisible(false);
 			}
 		});
@@ -68,6 +72,6 @@ public class lostPass extends JFrame {
 	}
 	public Boolean sendEmail(String s) {
 		String[] to = new String[] {s};
-		return EmailSender.sendMail("metabolixlite@gmail.com", "password6969", "Your new password is Apple123!", to);
+		return EmailSender.sendMail("metabolixlite@gmail.com", "password6969", "Your new password", "Your new password is 'Apple123!'", to);
 	}
 }

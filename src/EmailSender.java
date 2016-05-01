@@ -8,7 +8,7 @@ import javax.mail.internet.MimeMessage.RecipientType;
 
 public class EmailSender {
 	
-	public static boolean sendMail(String from, String password, String message, String to[]) {
+	public static boolean sendMail(String from, String password, String subject, String message, String to[]) {
 		String host = "smtp.gmail.com";
 		Properties props = System.getProperties();
 		
@@ -32,7 +32,7 @@ public class EmailSender {
 				mimeMessage.addRecipient(RecipientType.TO, toAddress[i]);
 			}
 			//add subject
-			mimeMessage.setSubject("Your New Password");
+			mimeMessage.setSubject(subject);
 			//set message to mimeMessage
 			mimeMessage.setText(message);
 			Transport transport = session.getTransport("smtp");

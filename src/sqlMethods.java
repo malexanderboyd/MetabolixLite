@@ -253,7 +253,7 @@ private boolean checkUserExists(String username) {
 		}
 	}
 	
-	public ResultSet resetPass(String email, String pass) {
+	public void resetPass(String email, String pass) {
 		java.sql.Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(connect_URL, userName, this.password);
@@ -264,14 +264,12 @@ private boolean checkUserExists(String username) {
 			preparedStmt.setString(1, pass);
 			preparedStmt.setString(2, email);
 
-			ResultSet rs = preparedStmt.executeQuery();
+			preparedStmt.executeUpdate();
 
 			conn.close();
-			return rs;
 
 		} catch(SQLException sqlE) {
 			sqlE.printStackTrace();
-			return null;
 		}
 	}	
 

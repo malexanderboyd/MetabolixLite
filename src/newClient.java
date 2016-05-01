@@ -8,11 +8,13 @@ import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Label;
 import java.awt.Button;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class newClient extends JFrame{
 	private JTextField date;
-	private JTextField name;
-	private JTextField age;
+	private static JTextField name;
+	private static JTextField age;
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField subscap;
@@ -258,8 +260,32 @@ public class newClient extends JFrame{
 		getContentPane().add(calfs);
 		
 		Button register = new Button("Register");
+		register.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				attemptNewClient();
+			}
+		});
 		register.setBounds(178, 465, 84, 27);
 		getContentPane().add(register);
-
-	}
-}
+		
+		
+	}; // Ends newClient 
+		
+		//Method to validate input and send to DB
+		private static void attemptNewClient() {
+		
+			//code to send to DB
+			sqlMethods sql = new sqlMethods();
+			if(sql.attemptNewClient2(new String(name.getText()), new Integer(age.getText()))) // user successfully logged in
+			{
+				System.out.println("success");
+				//clientMain cm = new clientMain();
+				//cm.setVisible(true);
+		
+			}
+		
+		} // Ends attemptNewClient
+		
+	
+} // Ends

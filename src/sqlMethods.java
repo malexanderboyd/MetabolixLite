@@ -71,6 +71,33 @@ public class sqlMethods {
 
 	}
 	
+	//send client info to DB
+	public Boolean attemptNewClient2(String name, Integer age) {
+		
+		java.sql.Connection conn = null;
+		try {
+		conn = DriverManager.getConnection(connect_URL, userName, this.password);
+		
+		//String newClient = "INSERT name IN Client VALUES('" + name + "')";	
+		//PreparedStatement preparedStmt = conn.prepareStatement(newClient);
+		//preparedStmt.setString(1, name);
+		
+		Statement st = conn.createStatement();
+		st.executeUpdate("insert into Client (Client_ID, Client_Fname) VALUES('" + 2 + "', '" + name + "')");
+		
+		//ResultSet rs = preparedStmt.executeUpdate();
+		//String retrievedpw = "n/a";
+		
+		conn.close();
+		return true;
+
+		} catch(SQLException sqlE) {
+			sqlE.printStackTrace();
+			return false;
+		}
+		
+	}
+	
 	
 	public boolean attemptSignUp(String username, String password, String email)
 	{

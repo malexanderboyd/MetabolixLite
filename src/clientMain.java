@@ -76,6 +76,14 @@ public class clientMain extends JFrame{
 		getContentPane().add(trainerVar);
 		
 		JButton btnNewButton = new JButton("Add New Client");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				newClient nc = new newClient();
+				nc.setBounds(400,0,450,600);
+				nc.setVisible(true);
+			}
+		});
 		btnNewButton.setBounds(150, 309, 105, 23);
 		getContentPane().add(btnNewButton);
 		setTitle("MetabolixLite: Trainer Panel");

@@ -48,6 +48,7 @@ public class clientMain extends JFrame{
 				Integer clientId = clientIds.get(rowindex);
 				client c = new client(clientId);
 				c.setVisible(true);
+				dispose();
 			}
 			
 			

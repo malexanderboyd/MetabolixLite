@@ -167,6 +167,10 @@ public class mainView extends JFrame {
 				cm.setVisible(true);
 		
 			}
+			else
+			{
+				
+			}
 		}
 	}
 }

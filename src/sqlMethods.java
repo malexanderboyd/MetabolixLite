@@ -287,7 +287,7 @@ private boolean checkUserExists(String username) {
 		}
 	}
 	
-	
+	//gets client email
 	public ResultSet getClientEmail(int clientID) {
 		java.sql.Connection conn = null;
 		try {
@@ -309,6 +309,30 @@ private boolean checkUserExists(String username) {
 		}
 	}
 	
+	//sets form boolean in table
+	public void formSet(int clientID, boolean health, boolean envi, boolean lia) {
+		java.sql.Connection conn = null;
+		try {
+		conn = DriverManager.getConnection(connect_URL, userName, this.password);
+		
+		String form = "UPDATE Client_Assessment_Form SET Health_History_Questionnaire= ? AND Environmental_Inventory = ? AND Liability_Waiver = ? WHERE C_ID = ?";
+		
+		PreparedStatement preparedStmt = conn.prepareStatement(form);
+		preparedStmt.setBoolean(1, health);
+		preparedStmt.setBoolean(2, envi);
+		preparedStmt.setBoolean(3, lia);
+		preparedStmt.setInt(4, clientID);
+	
+		preparedStmt.executeUpdate();
+		conn.close();
+
+		} catch(SQLException sqlE) {
+			sqlE.printStackTrace();
+		}
+	}//end of form set
+	
+	
+	//reset password
 	public void resetPass(String email, String pass) {
 		java.sql.Connection conn = null;
 		try {
@@ -329,6 +353,6 @@ private boolean checkUserExists(String username) {
 		} catch(SQLException sqlE) {
 			sqlE.printStackTrace();
 		}
-	}
+	}//end of reset
 
 } // end of class

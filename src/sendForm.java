@@ -55,6 +55,7 @@ public class sendForm extends JFrame{
 		getContentPane().add(icon);
 		setTitle("MetabolixLite: Form Sender");
 		
+		//send button and actions
 		submit.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				attemptFormSend(clientID,checkBox_health.isSelected(),checkBox_envi.isSelected(),checkBox_Lia.isSelected(), checkbox_Reimbursement.isSelected());
@@ -62,26 +63,30 @@ public class sendForm extends JFrame{
 			}
 		});
 		
-		pack();
+		pack();//pack for size 
 		
 	}//ends send form
 		
 	//Method to validate input and send to DB
-	private static void attemptFormSend(int client, boolean health, boolean envi, boolean lia, boolean Reimbursement) {
+	private static void attemptFormSend(int client, boolean health, boolean envi, boolean lia, boolean reimbursement) {
+		String clientEmail = null;
 		try {
-		
-		//need to add methods to force insert into all fields....will add this last 
-	
+			
 		//code to send to DB
 		sqlMethods sql = new sqlMethods();
+		sqlMethods sql1 = new sqlMethods();
 		ResultSet email;
 		email = sql.getClientEmail(client);
+		
 		while(email.next()){
-			String clientEmail=email.getString(1);
-			
-			//call email function here (will set file needed in mail)
-
+			clientEmail=email.getString(1);
 			}
+		
+		//call email function here
+		sendEmail(clientEmail,clientEmail, health, envi, lia, reimbursement);
+		
+		//set sql client form vars
+		sql.formSet(client, health, envi, lia);		
 		
 		} catch(Exception e){
 			e.printStackTrace();
@@ -89,7 +94,10 @@ public class sendForm extends JFrame{
 	
 	} // Ends attemptFormSend
 	
-	
-	
+	public static Boolean sendEmail(String s,String email,boolean health, boolean envi, boolean lia, boolean reimbursement) {
+		String[] to = new String[] {s};
+		return EmailSender.sendAttach("metabolixlite@gmail.com", "password6969", "Your trainer has sent some forms","Attached are some forms that your trainer has requested you fill out and return to him.'",to,
+				email,health, envi, lia, reimbursement);
+	}// end email
 
 }//end

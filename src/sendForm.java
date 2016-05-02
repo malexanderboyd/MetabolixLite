@@ -62,7 +62,7 @@ public class sendForm extends JFrame{
 				setVisible(false);
 			}
 		});
-		
+		setLocationRelativeTo(null);
 		pack();//pack for size 
 		
 	}//ends send form
@@ -96,7 +96,7 @@ public class sendForm extends JFrame{
 	
 	public static Boolean sendEmail(String s,String email,boolean health, boolean envi, boolean lia, boolean reimbursement) {
 		String[] to = new String[] {s};
-		return EmailSender.sendAttach("metabolixlite@gmail.com", "password6969", "Your trainer has sent some forms","Attached are some forms that your trainer has requested you fill out and return to him.'",to,
+		return EmailSender.sendAttach("metabolixlite@gmail.com", "password6969", "Trainer Form Request","Attached are forms that your trainer has requested that you fill out.'",to,
 				email,health, envi, lia, reimbursement);
 	}// end email
 

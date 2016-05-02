@@ -21,14 +21,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class clientMain extends JFrame{
 	private JTable clientSQL;
-	private final String trainer;	
-	public clientMain(String trainerUsername) {
+	private String trainer;
+	public clientMain(final int trainerId) {
 		
-		trainer = trainerUsername;
 		clientIds = new ArrayList<Integer>();
 		
 		setupTable();
-		getClients(trainer);
+		getClients(trainerId);
 		setMinimumSize(new Dimension(400, 415));
 		setMaximumSize(new Dimension(400, 415));
 		setResizable(false);
@@ -48,7 +47,7 @@ public class clientMain extends JFrame{
 				Integer clientId = clientIds.get(rowindex);
 				client c = new client(clientId);
 				c.setVisible(true);
-				dispose();
+				
 			}
 			
 			
@@ -90,7 +89,9 @@ public class clientMain extends JFrame{
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				account acc = new account();
+				sqlMethods sql = new sqlMethods();
+				trainer = sql.getTrainerUsername(trainerId);
+				account acc = new account(trainer);
 				acc.setVisible(true);
 			}
 		});
@@ -114,11 +115,12 @@ public class clientMain extends JFrame{
 		btnNewButton.setBounds(150, 309, 145, 24);
 		getContentPane().add(btnNewButton);
 		setTitle("MetabolixLite: Trainer Panel");
+		setLocationRelativeTo(null);
 	}
 	
 	
 	
-	private void getClients(final String trainer) {
+	private void getClients(final int trainer) {
 		
 		try {
 				sqlMethods sql = new sqlMethods();

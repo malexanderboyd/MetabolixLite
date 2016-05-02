@@ -159,17 +159,19 @@ public class mainView extends JFrame {
 			//code to login
 			// test sql method //
 			sqlMethods sql = new sqlMethods();
-			if(sql.attemptLogin(trainerUser.getText(), new String(trainerPass.getPassword()))) // user successfully logged in
+			int clientID = sql.attemptLogin(trainerUser.getText(), new String(trainerPass.getPassword())); // user successfully logged in
+			if(clientID != -1)
 			{
 				System.out.println("success");
-				String username = trainerUser.getText();
-				clientMain cm = new clientMain(username);
+				clientMain cm = new clientMain(clientID);
 				cm.setVisible(true);
 		
 			}
 			else
 			{
-				
+				errorText.setText("Invalid username/password combination.");
+				errorText.setBounds(75, 250, 350, 15);
+				errorText.setVisible(true);
 			}
 		}
 	}

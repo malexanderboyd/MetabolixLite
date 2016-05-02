@@ -16,7 +16,7 @@ import java.awt.event.MouseEvent;
 
 public class client extends JFrame{
 	private JTable girthTable;
-	private JTable table_2;
+	private JTable fitnessPlanTable;
 	private JTable skinTable;
 	private JTable weekTable;
 	private int clientID;
@@ -31,11 +31,12 @@ public class client extends JFrame{
 	getContentPane().setLayout(null);
 	
 	JScrollPane mealPlan = new JScrollPane();
-	mealPlan.setBounds(12, 377, 414, 71);
+	mealPlan.setBounds(12, 377, 605, 71);
 	getContentPane().add(mealPlan);
 	
-	table_2 = new JTable();
-	mealPlan.setViewportView(table_2);
+	fitnessPlanTable = new JTable();
+	fitnessPlanTable.setModel(fitnessPlanTableModel);
+	mealPlan.setViewportView(fitnessPlanTable);
 	
 	JLabel weekDataLabel = new JLabel("Progress Data:");
 	weekDataLabel.setBounds(12, 114, 116, 14);
@@ -54,7 +55,7 @@ public class client extends JFrame{
 	getContentPane().add(btnNewButton);
 
 	JTabbedPane assessmentTestTabPane = new JTabbedPane(JTabbedPane.TOP);
-	assessmentTestTabPane.setBounds(22, 249, 419, 90);
+	assessmentTestTabPane.setBounds(22, 249, 595, 90);
 	getContentPane().add(assessmentTestTabPane);
 	
 	JScrollPane fold = new JScrollPane();
@@ -72,7 +73,7 @@ public class client extends JFrame{
 	girth.setViewportView(girthTable);
 	
 	JScrollPane scrollPane = new JScrollPane();
-	scrollPane.setBounds(12, 140, 419, 71);
+	scrollPane.setBounds(12, 140, 605, 71);
 	getContentPane().add(scrollPane);
 	
 	weekTable = new JTable();
@@ -85,7 +86,7 @@ public class client extends JFrame{
 		public void mouseClicked(MouseEvent e) {
 			sendForm sf = new sendForm(clientID);
 			sf.setVisible(true);
-			dispose();
+			
 		}
 	});
 	sendFormBtn.setBounds(230, 33, 117, 25);
@@ -93,19 +94,66 @@ public class client extends JFrame{
 	
 	
 	setPreferredSize(new Dimension(650,650));
+	setLocationRelativeTo(null);
 	pack();
 	updateTables();
+	generateFitnessPlans();
 	repaint();
 	
 	
 	
 
 	}
+	
+	
+	private void generateFitnessPlans()
+	{
+		int weeks = weekTableModel.getRowCount();
+		for(int i = 0; i < weeks; i++)
+		{
+			fitness_weight = (double) weekTableModel.getValueAt(i, 4);
+			fitness_height = (double) weekTableModel.getValueAt(i, 3);
+			int age = (int) weekTableModel.getValueAt(i, 2);
+			double sf = ((double) skinTableModel.getValueAt(i, 8)) + ((double) skinTableModel.getValueAt(i, 5)) + (double) skinTableModel.getValueAt(i, 7) ;
+			double density = (1.10938 - (0.0008267*sf) + 0.0000016*(sf*sf) - (0.0002574*age));
+			bf = ((4.95/density) - 4.5)*100;
+			double fw = fitness_weight * (bf/100);
+			lbw = fitness_weight - fw; // Lean body weight
+			rmr = (66+(13.75*(fitness_weight*0.45359237))+(5*(fitness_height*2.54))-(6.8*age));
+			exmr = rmr*1.375;
+			protein = ((((rmr+exmr)/2)/4)*0.3);
+			carbs = ((rmr*0.4)/9);
+			fats = ((rmr*0.3)/9);
+			int calories = (int) (rmr+200);
+			/*"Date", "Weight", "LBW", "FW", "RMR", "EX MR",
+			"Protein (g)", "Carbs (g)", "Fats (g)"*/
+			//fitnessPlanTableModel.addRow(new Object { weekTableModel.getValueAt(i, 0), fitness_weight, lbw, fw, rmr, exmr, protein, carbs, fats, calories}); 
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private void updateTables()
 	{
 		weekTableModel.setRowCount(0);
 		skinTableModel.setRowCount(0);
 		girthTableModel.setRowCount(0);
+		fitnessPlanTableModel.setRowCount(0);
 
 		Thread runner = new Thread() 
 		{
@@ -219,17 +267,13 @@ public class client extends JFrame{
 					e.printStackTrace();
 				}
 			}
-
-
-
-
-
-
 		};
+
 		
 		runner.run();
 		runner2.run();
 		runner3.run();
+
 		
 
 
@@ -240,7 +284,23 @@ public class client extends JFrame{
 	private void setupTables()
 	{
 		//Client(Client_ID, Client_Fname, Client_Lname, Client_Age, Date_Entered, Height, Weight, Trainer_Uname)
-		
+		fitnessPlanTableModel = new DefaultTableModel() {
+			Class[] columnTypes = new Class[] {
+					Object.class, Object.class, Object.class, Object.class, Object.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			public boolean isCellEditable(int row, int column) {
+			       //all cells false
+			       return false;
+			    }
+		};
+		fitnessPlanTableModel.setColumnCount(10);
+		fitnessPlanTableModel.setColumnIdentifiers(new String[] {
+				"Date", "Weight", "LBW", "FW", "RMR", "EX MR",
+				"Protein (g)", "Carbs (g)", "Fats (g)", "Calories"
+		});
 		/*
 		 * 
 		 *  weekly data table
@@ -307,22 +367,36 @@ public class client extends JFrame{
 	private DefaultTableModel weekTableModel;
 	private DefaultTableModel skinTableModel;
 	private DefaultTableModel girthTableModel;
+	private DefaultTableModel fitnessPlanTableModel;
 	private int ClientID;
-	private float midax;
-	private float subscap;
-	private float tricep;
-	private float kidney;
-	private float supra;
-	private float girth_chest;
-	private float girth_thigh;
-	private float girth_abdom;
-	private float arm;
-	private float waist;
-	private float calf;
-	private float hips;
-	private float neck;
-	private float skin_thigh;
-	private float skin_chest;
-	private float skin_abdom;
+	private double midax;
+	private double subscap;
+	private double tricep;
+	private double kidney;
+	private double supra;
+	private double girth_chest;
+	private double girth_thigh;
+	private double girth_abdom;
+	private double arm;
+	private double waist;
+	private double calf;
+	private double hips;
+	private double neck;
+	private double skin_thigh;
+	private double skin_chest;
+	private double skin_abdom;
+	
+	private double fitness_weight;
+	private double fitness_height;
+	private double bf;
+	private double lbw;
+	private double fw;
+	private double rmr;
+	private double exmr;
+	private double protein;
+	private double carbs;
+	private double fats;
+	
+	
 }
 

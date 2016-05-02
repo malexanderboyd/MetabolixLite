@@ -4,13 +4,28 @@ import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.sql.ResultSet;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
 public class account extends JFrame {
 	private JTextField textField;
-	public account() {
+	private final String trainer;
+    public account(String trainerUsername) {
+        trainer = trainerUsername;
+        String trainerEmail = null;
+        try {
+        sqlMethods sql = new sqlMethods();
+        ResultSet email = sql.getTrainerEmail(trainer);
+       
+        while(email.next()){
+            trainerEmail = email.getString(1);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
 		setTitle("MetabolixLite: Account Settings");
 		getContentPane().setBackground(new Color(255, 235, 205));
 		getContentPane().setLayout(null);
@@ -61,12 +76,12 @@ public class account extends JFrame {
 		lblUsername.setBounds(47, 236, 65, 14);
 		getContentPane().add(lblUsername);
 		
-		JLabel emailVar = new JLabel("");
-		emailVar.setBounds(122, 206, 148, 14);
-		getContentPane().add(emailVar);
-		
-		JLabel usernameVar = new JLabel("");
-		usernameVar.setBounds(122, 237, 132, 14);
-		getContentPane().add(usernameVar);
+	       JLabel emailVar = new JLabel(trainerEmail);
+	        emailVar.setBounds(122, 206, 148, 14);
+	        getContentPane().add(emailVar);
+	       
+	        JLabel usernameVar = new JLabel(trainer);
+	        usernameVar.setBounds(122, 237, 132, 14);
+	        getContentPane().add(usernameVar);
 	}
 }

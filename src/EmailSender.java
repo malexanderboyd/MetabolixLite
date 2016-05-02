@@ -76,17 +76,17 @@ public class EmailSender {
 			
 			StringBuilder storage = new StringBuilder();
 			
-			if(health=true){
+			if(health==true){
 				storage.append("\n"+"The health questionnaire can be found here http://metabolix.net/hh_quest/hhquest.php?");
 			}
 			
-			if(envi=true){
+			if(envi==true){
 				storage.append("\n"+"The environmental inventory form can be found here http://login.metabolix.net/files/ClientInsurance.pdf");		
 			}
-			if(lia=true){
+			if(lia==true){
 				storage.append("\n"+"The liability waiver can be found here http://metabolix.net/hh_quest/hhquest.php?");				
 			}
-			if(reimbursement=true){
+			if(reimbursement==true){
 				storage.append("\n"+"The client reimbursement form can be found here http://login.metabolix.net/files/ClientInsurance.pdf");		
 			}
 			

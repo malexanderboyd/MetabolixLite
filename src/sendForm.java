@@ -26,27 +26,27 @@ public class sendForm extends JFrame{
 		getContentPane().add(submit);
 		
 		JLabel label = new JLabel("Please select desired forms and enter email address of recipient.");
-		label.setBounds(29, 168, 330, 20);
+		label.setBounds(9, 176, 330, 20);
 		getContentPane().add(label);
 		
 		final JCheckBox checkBox_health = new JCheckBox("Health Questionnaire");
 		checkBox_health.setBackground(new Color(255, 235, 205));
-		checkBox_health.setBounds(29, 215, 156, 23);
+		checkBox_health.setBounds(19, 219, 156, 23);
 		getContentPane().add(checkBox_health);
 		
 		final JCheckBox checkBox_envi = new JCheckBox("Environmental Inventory");
 		checkBox_envi.setBackground(new Color(255, 235, 205));
-		checkBox_envi.setBounds(187, 189, 156, 23);
+		checkBox_envi.setBounds(177, 193, 156, 23);
 		getContentPane().add(checkBox_envi);
 		
 		final JCheckBox checkBox_Lia = new JCheckBox("Liability Waiver");
 		checkBox_Lia.setBackground(new Color(255, 235, 205));
-		checkBox_Lia.setBounds(29, 189, 156, 23);
+		checkBox_Lia.setBounds(19, 193, 156, 23);
 		getContentPane().add(checkBox_Lia);
 		
 		final JCheckBox checkbox_Reimbursement = new JCheckBox("Client Reimbursement");
 		checkbox_Reimbursement.setBackground(new Color(255, 235, 205));
-		checkbox_Reimbursement.setBounds(187, 215, 156, 23);
+		checkbox_Reimbursement.setBounds(177, 219, 156, 23);
 		getContentPane().add(checkbox_Reimbursement);
 		
 		JLabel icon = new JLabel("");
@@ -96,7 +96,7 @@ public class sendForm extends JFrame{
 	
 	public static Boolean sendEmail(String s,String email,boolean health, boolean envi, boolean lia, boolean reimbursement) {
 		String[] to = new String[] {s};
-		return EmailSender.sendAttach("metabolixlite@gmail.com", "password6969", "Your trainer has sent some forms","Attached are some forms that your trainer has requested you fill out and return to him.'",to,
+		return EmailSender.sendAttach("metabolixlite@gmail.com", "password6969", "Trainer Forms Request","Attached are forms that your trainer has requested you fill out.'",to,
 				email,health, envi, lia, reimbursement);
 	}// end email
 

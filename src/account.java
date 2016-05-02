@@ -1,9 +1,13 @@
 import javax.swing.JFrame;
+
 import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
 import javax.swing.JTextField;
@@ -53,6 +57,26 @@ public class account extends JFrame {
 		getContentPane().add(label_2);
 		
 		JButton button = new JButton("Change");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = textField.getText();
+				sqlMethods sql = new sqlMethods();
+				String trainerEmail = null;
+		        try {
+		        sqlMethods sql2 = new sqlMethods();
+		        ResultSet email = sql2.getTrainerEmail(trainer);
+		       
+		        while(email.next()){
+		            trainerEmail = email.getString(1);
+		            }
+		        } catch(Exception ex){
+		            ex.printStackTrace();
+		        }
+
+					sql.resetPass(trainerEmail, s);
+					setVisible(false);
+			}
+		});
 		button.setBounds(111, 329, 109, 23);
 		getContentPane().add(button);
 		
@@ -76,12 +100,12 @@ public class account extends JFrame {
 		lblUsername.setBounds(47, 236, 65, 14);
 		getContentPane().add(lblUsername);
 		
-	       JLabel emailVar = new JLabel(trainerEmail);
-	        emailVar.setBounds(122, 206, 148, 14);
-	        getContentPane().add(emailVar);
+	    JLabel emailVar = new JLabel(trainerEmail);
+	    emailVar.setBounds(122, 206, 148, 14);
+	    getContentPane().add(emailVar);
 	       
-	        JLabel usernameVar = new JLabel(trainer);
-	        usernameVar.setBounds(122, 237, 132, 14);
-	        getContentPane().add(usernameVar);
+	    JLabel usernameVar = new JLabel(trainer);
+	    usernameVar.setBounds(122, 237, 132, 14);
+	    getContentPane().add(usernameVar);
 	}
 }

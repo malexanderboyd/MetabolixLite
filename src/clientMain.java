@@ -46,7 +46,6 @@ public class clientMain extends JFrame{
 			public void mouseReleased(MouseEvent e) {
 				int rowindex = clientSQL.getSelectedRow();
 				Integer clientId = clientIds.get(rowindex);
-				
 				client c = new client(clientId);
 				c.setVisible(true);
 			}
@@ -69,7 +68,6 @@ public class clientMain extends JFrame{
 		
 		JButton changepass = new JButton("Change Password");
 		changepass.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				//System.out.println("ChangePassword has been clicked");
 				//display passRest.java view!!
@@ -89,6 +87,12 @@ public class clientMain extends JFrame{
 		getContentPane().add(txt);
 		
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				account acc = new account();
+				acc.setVisible(true);
+			}
+		});
 		lblNewLabel.setIcon(new ImageIcon(clientMain.class.getResource("/images/small_logo.png")));
 		lblNewLabel.setBounds(0, 0, 38, 33);
 		getContentPane().add(lblNewLabel);

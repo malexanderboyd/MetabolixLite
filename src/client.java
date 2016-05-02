@@ -31,7 +31,7 @@ public class client extends JFrame{
 	getContentPane().setLayout(null);
 	
 	JScrollPane mealPlan = new JScrollPane();
-	mealPlan.setBounds(120, 377, 414, 71);
+	mealPlan.setBounds(12, 377, 414, 71);
 	getContentPane().add(mealPlan);
 	
 	table_2 = new JTable();
@@ -45,8 +45,8 @@ public class client extends JFrame{
 	lblAssessmentTst.setBounds(12, 223, 160, 14);
 	getContentPane().add(lblAssessmentTst);
 	
-	JLabel lblMealPlan = new JLabel("Meal Plan:");
-	lblMealPlan.setBounds(22, 351, 111, 14);
+	JLabel lblMealPlan = new JLabel("Fitness Plans:");
+	lblMealPlan.setBounds(12, 351, 111, 14);
 	getContentPane().add(lblMealPlan);
 	
 	JButton btnNewButton = new JButton("New Week");

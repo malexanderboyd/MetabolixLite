@@ -14,6 +14,8 @@ import java.awt.Dimension;
 
 
 public class mainView extends JFrame {
+	final static JFrame mainFrame = new JFrame();
+
 	public mainView() {
 	}
 
@@ -30,7 +32,6 @@ public class mainView extends JFrame {
 
 	private static void initFrame() {
 			
-		JFrame mainFrame = new JFrame();
 		mainFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		mainFrame.setFont(new Font("Cambria Math", Font.PLAIN, 13));
 		mainFrame.getContentPane().setBackground(new Color(255, 235, 205));
@@ -165,11 +166,12 @@ public class mainView extends JFrame {
 				String username = trainerUser.getText();
 				clientMain cm = new clientMain(username);
 				cm.setVisible(true);
-		
+				mainFrame.dispose();
 			}
-			else
-			{
-				
+			else{
+				errorText.setText("Invalid username or password.");
+				errorText.setBounds(150, 250, 200, 15);
+				errorText.setVisible(true);
 			}
 		}
 	}

@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -74,6 +75,7 @@ public class account extends JFrame {
 		        }
 
 					sql.resetPass(trainerEmail, s);
+					JOptionPane.showMessageDialog(null, "Password changed.");
 					setVisible(false);
 			}
 		});

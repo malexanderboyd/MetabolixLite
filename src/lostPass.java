@@ -50,8 +50,10 @@ public class lostPass extends JFrame {
 
 				if (sendEmail(s)) {
 					sql.resetPass(s, "Apple123!");
+					JOptionPane.showMessageDialog(null, "Email successfully sent.");
 					setVisible(false);
 				} else
+					JOptionPane.showMessageDialog(null, "Email unsuccessfully sent.");
 					setVisible(false);
 			}
 		});

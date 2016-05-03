@@ -75,6 +75,7 @@ public class EmailSender {
 			mimeMessage.setSubject(subject);
 			
 			StringBuilder storage = new StringBuilder();
+			storage.append(message);
 			
 			if(health==true){
 				storage.append("\n"+"The health questionnaire can be found here http://metabolix.net/hh_quest/hhquest.php?");

@@ -106,7 +106,7 @@ public class clientMain extends JFrame{
 				clientSQL.repaint();
 			}
 		});
-		btnNewButton.setBounds(150, 309, 145, 24);
+		btnNewButton.setBounds(130, 309, 145, 24);
 		getContentPane().add(btnNewButton);
 		setTitle("MetabolixLite: Trainer Panel");
 		setLocationRelativeTo(null);

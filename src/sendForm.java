@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.ImageIcon;
@@ -59,6 +60,7 @@ public class sendForm extends JFrame{
 		submit.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				attemptFormSend(clientID,checkBox_health.isSelected(),checkBox_envi.isSelected(),checkBox_Lia.isSelected(), checkbox_Reimbursement.isSelected());
+				JOptionPane.showMessageDialog(null, "Forms successfully sent.");
 				setVisible(false);
 			}
 		});
@@ -88,6 +90,10 @@ public class sendForm extends JFrame{
 		//set sql client form vars
 		sql.formSet(client, health, envi, lia);		
 		
+		
+		
+		
+		
 		} catch(Exception e){
 			e.printStackTrace();
 		}
@@ -97,7 +103,7 @@ public class sendForm extends JFrame{
 	public static Boolean sendEmail(String s,String email,boolean health, boolean envi, boolean lia, boolean reimbursement) {
 		String[] to = new String[] {s};
 		
-		return EmailSender.sendAttach("metabolixlite@gmail.com", "password6969", "Trainer Forms Request","Attached are forms that your trainer has requested you fill out.'",to,
+		return EmailSender.sendAttach("metabolixlite@gmail.com", "password6969", "Trainer Forms Request","Attached are forms that your trainer has requested you fill out.",to,
 				email,health, envi, lia, reimbursement);
 	}// end email
 

@@ -6,27 +6,30 @@ import java.awt.Label;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class addWeek extends JFrame{
-	private JTextField date;
-	private JTextField textField_5;
-	private JTextField subscap;
-	private JTextField tricepts;
-	private JTextField midAx;
-	private JTextField kidney;
-	private JTextField Abdom_f;
-	private JTextField supra;
-	private JTextField chest_f;
-	private JTextField thights_f;
-	private JTextField neck;
-	private JTextField chest_g;
-	private JTextField arms;
-	private JTextField waist;
-	private JTextField abdom_g;
-	private JTextField hips;
-	private JTextField thighs_g;
-	private JTextField calfs;
-	public addWeek() {
+	private static JTextField date;
+	private static JTextField textField_5;
+	private static JTextField subscap;
+	private static JTextField tricepts;
+	private static JTextField midAx;
+	private static JTextField kidney;
+	private static JTextField Abdom_f;
+	private static JTextField supra;
+	private static JTextField chest_f;
+	private static JTextField thights_f;
+	private static JTextField neck;
+	private static JTextField chest_g;
+	private static JTextField arms;
+	private static JTextField waist;
+	private static JTextField abdom_g;
+	private static JTextField hips;
+	private static JTextField thighs_g;
+	private static JTextField calfs;
+	public addWeek(final int client) {
+		
 		setTitle("MetabolixLite: New Week");
 		getContentPane().setBackground(new Color(255, 235, 205));
 		getContentPane().setLayout(null);
@@ -57,12 +60,12 @@ public class addWeek extends JFrame{
 		lowerTitle.setBounds(157, 93, 151, 22);
 		getContentPane().add(lowerTitle);
 		
-		Label foldHead = new Label("Skin Folds");
+		Label foldHead = new Label("Girth");
 		foldHead.setAlignment(Label.CENTER);
 		foldHead.setBounds(75, 121, 62, 22);
 		getContentPane().add(foldHead);
 		
-		Label label_6 = new Label("Girth");
+		Label label_6 = new Label("Skinfolds");
 		label_6.setAlignment(Label.CENTER);
 		label_6.setBounds(265, 121, 62, 22);
 		getContentPane().add(label_6);
@@ -212,8 +215,33 @@ public class addWeek extends JFrame{
 		getContentPane().add(calfs);
 		
 		Button submit = new Button("Submit");
+		submit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				attemptAddWeek(client);
+			}
+		});
 		submit.setBounds(178, 401, 84, 27);
 		getContentPane().add(submit);
 
-	}
+	} // Ends add week
+	
+	//Method to validate input and send to DB
+	private static void attemptAddWeek(int client) {
+		
+		
+		//need to add methods to force insert into all fields....will add this last 
+	
+		//code to send to DB
+		sqlMethods sql = new sqlMethods();
+		if(sql.attemptAddWeek(client, new String(date.getText()), new Integer(textField_5.getText()), new Float(midAx.getText()), new Float(subscap.getText()), new Float(tricepts.getText()), new Float(kidney.getText()), new Float(supra.getText()), new Float(chest_f.getText()), new Float(thights_f.getText()), new Float(Abdom_f.getText()), new Float(arms.getText()), new Float(waist.getText()), new Float(calfs.getText()), new Float(hips.getText()), new Float(thighs_g.getText()), new Float(neck.getText()), new Float(chest_g.getText()), new Float(abdom_g.getText())))                                                                 
+		{
+			System.out.println("success - entered new client");
+			//clientMain cm = new clientMain();
+			//cm.setVisible(true);
+	
+		}
+	
+	} // Ends attemptNewClient
+
 }

@@ -86,10 +86,6 @@ public class sqlMethods {
 		try {
 		conn = DriverManager.getConnection(connect_URL, userName, this.password);
 		
-		//String newClient = "INSERT name IN Client VALUES('" + name + "')";	
-		//PreparedStatement preparedStmt = conn.prepareStatement(newClient);
-		//preparedStmt.setString(1, name);
-		
 		Statement st = conn.createStatement();
 		st.executeUpdate("insert into Client (Client_name, Client_Age, Date_Entered, Height, Weight, Trainer_id) VALUES('" + name + "', '"+ age +"', '"+ date + "', '"+ height +"', '"+ weight +"', '"+ trainerId +"')");
 		
@@ -123,6 +119,37 @@ public class sqlMethods {
 			return false;
 		}
 		
+	}
+	
+	public boolean attemptAddWeek(int clientID, String date, Integer weight, Float midax, Float subscap, Float triceps, Float kidney, Float supra, Float gchest, Float gthigh, Float gabdom, Float arm, Float waist, Float calf, Float hips, Float s_thigh, Float neck, Float s_chest, Float s_abdom) {
+		
+		java.sql.Connection conn = null;
+		try {
+		conn = DriverManager.getConnection(connect_URL, userName, this.password);
+
+		Statement st = conn.createStatement();
+		String update = ("UPDATE Client SET Date_Entered = ?, Weight = ? WHERE Client_ID = ? ");
+		PreparedStatement p = conn.prepareStatement(update);
+		p.setString(1, date);
+		p.setInt(2, weight);
+		p.setInt(3, clientID);
+		p.executeUpdate();
+		
+		//System.out.printf("Client ID is equal to %d", cid);
+		
+		//girth
+		st.executeUpdate("insert into Girth (G_date, MidAx, Subscap, Triceps, Kidney, Supra, G_Chest, G_Thigh, G_Abdom, C_IDg) VALUES('"+ date + "', '"+ midax +"', '"+ subscap+"', '"+ triceps +"', '"+ kidney +"', '"+ supra +"', '"+ gchest +"', '"+ gthigh +"', '"+ gabdom +"', '"+ clientID +"')");                                                   
+		//skinfold
+		st.executeUpdate("insert into Skinfold (S_Date, Arm, Waist, Calf, Hips, S_Thigh, Neck, S_Chest, S_Abdom, C_IDs) VALUES('"+ date +"', '"+ arm +"', '"+ waist +"', '"+ calf +"', '"+ hips +"', '"+ s_thigh + "', '"+ neck +"', '"+ s_chest +"', '"+ s_abdom +"', '"+ clientID + "')");
+		
+		conn.close();
+		return true;
+
+		} catch(SQLException sqlE) {
+			sqlE.printStackTrace();
+			return false;
+		}
+	
 	}
 	
 	

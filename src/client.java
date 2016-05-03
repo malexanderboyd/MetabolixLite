@@ -54,7 +54,7 @@ public class client extends JFrame{
 	btnNewButton.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
-			addWeek aw = new addWeek();
+			addWeek aw = new addWeek(clientID);
 			aw.setBounds(400,0,450,600);
 			aw.setVisible(true);
 		}

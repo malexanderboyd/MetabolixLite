@@ -80,7 +80,7 @@ public class sqlMethods {
 	}
 	
 	//send client info to DB
-	public Boolean attemptNewClient2(String name, Integer age, String date, Integer height, Integer weight, Float midax, Float subscap, Float triceps, Float kidney, Float supra, Float gchest, Float gthigh, Float gabdom) {
+	public Boolean attemptNewClient2(String name, Integer age, String date, Integer height, Integer weight, Float midax, Float subscap, Float triceps, Float kidney, Float supra, Float gchest, Float gthigh, Float gabdom, Integer trainerId, Float arm, Float waist, Float calf, Float hips, Float s_thigh, Float neck, Float s_chest, Float s_abdom) {
 		
 		java.sql.Connection conn = null;
 		try {
@@ -91,9 +91,26 @@ public class sqlMethods {
 		//preparedStmt.setString(1, name);
 		
 		Statement st = conn.createStatement();
-		st.executeUpdate("insert into Client (Client_name, Client_Age, Date_Entered, Height, Weight) VALUES('" + name + "', '"+ age +"', '"+ date + "', '"+ height +"', '"+ weight +"')");
+		st.executeUpdate("insert into Client (Client_name, Client_Age, Date_Entered, Height, Weight, Trainer_id) VALUES('" + name + "', '"+ age +"', '"+ date + "', '"+ height +"', '"+ weight +"', '"+ trainerId +"')");
 		
-		st.executeUpdate("insert into Girth (G_date, MidAx, Subscap, Triceps, Kidney, Supra, G_Chest, G_Thigh, G_Abdom, C_IDg) VALUES('"+ date + "', '"+ midax +"', '"+ subscap+"', '"+ triceps +"', '"+ kidney +"', '"+ supra +"', '"+ gchest +"', '"+ gthigh +"', '"+ gabdom +"', '"+ 5 +"')");                                                   
+		//add sql statement to grab the client id to pass into the girth and skinfold table
+		String idQ = ("SELECT Client_ID FROM Client WHERE Client_name = ? AND Client_Age = ?");
+		PreparedStatement preparedStmt = conn.prepareStatement(idQ);
+		preparedStmt.setString(1, name);
+		preparedStmt.setInt(2,  age);
+		
+		ResultSet r = preparedStmt.executeQuery();
+		int cid = 0;
+		while (r.next()) {
+		cid = r.getInt("Client_ID");
+		}
+		
+		//System.out.printf("Client ID is equal to %d", cid);
+		
+		//girth
+		st.executeUpdate("insert into Girth (G_date, MidAx, Subscap, Triceps, Kidney, Supra, G_Chest, G_Thigh, G_Abdom, C_IDg) VALUES('"+ date + "', '"+ midax +"', '"+ subscap+"', '"+ triceps +"', '"+ kidney +"', '"+ supra +"', '"+ gchest +"', '"+ gthigh +"', '"+ gabdom +"', '"+ cid +"')");                                                   
+		//skinfold
+		st.executeUpdate("insert into Skinfold (S_Date, Arm, Waist, Calf, Hips, S_Thigh, Neck, S_Chest, S_Abdom, C_IDs) VALUES('"+ date +"', '"+ arm +"', '"+ waist +"', '"+ calf +"', '"+ hips +"', '"+ s_thigh + "', '"+ neck +"', '"+ s_chest +"', '"+ s_abdom +"', '"+ cid + "')");
 		
 		//ResultSet rs = preparedStmt.executeUpdate();
 		//String retrievedpw = "n/a";

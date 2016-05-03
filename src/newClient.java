@@ -33,7 +33,7 @@ public class newClient extends JFrame{
 	private static JTextField hips;
 	private static JTextField thighs_g;
 	private static JTextField calfs;
-	public newClient() {
+	public newClient(final int trainerId) {
 		setTitle("MetabolixLite: Client Register");
 		getContentPane().setBackground(new Color(255, 235, 205));
 		getContentPane().setLayout(null);
@@ -263,7 +263,7 @@ public class newClient extends JFrame{
 		register.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				attemptNewClient();
+				attemptNewClient(trainerId);
 			}
 		});
 		register.setBounds(178, 465, 84, 27);
@@ -273,14 +273,14 @@ public class newClient extends JFrame{
 	}; // Ends newClient 
 		
 		//Method to validate input and send to DB
-		private static void attemptNewClient() {
+		private static void attemptNewClient(int trainerId) {
 			
 			
 			//need to add methods to force insert into all fields....will add this last 
 		
 			//code to send to DB
 			sqlMethods sql = new sqlMethods();
-			if(sql.attemptNewClient2(new String(name.getText()), new Integer(age.getText()), new String(date.getText()), new Integer(textField_4.getText()), new Integer(textField_5.getText()), new Float(midAx.getText()), new Float(subscap.getText()), new Float(tricepts.getText()), new Float(kidney.getText()), new Float(supra.getText()), new Float(chest_f.getText()), new Float(thighs_f.getText()), new Float(Abdom_f.getText()) ))                                                                 
+			if(sql.attemptNewClient2(new String(name.getText()), new Integer(age.getText()), new String(date.getText()), new Integer(textField_4.getText()), new Integer(textField_5.getText()), new Float(midAx.getText()), new Float(subscap.getText()), new Float(tricepts.getText()), new Float(kidney.getText()), new Float(supra.getText()), new Float(chest_f.getText()), new Float(thighs_f.getText()), new Float(Abdom_f.getText()), trainerId, new Float(arms.getText()), new Float(waist.getText()), new Float(calfs.getText()), new Float(hips.getText()), new Float(thighs_g.getText()), new Float(neck.getText()), new Float(chest_g.getText()), new Float(abdom_g.getText())))                                                                 
 			{
 				System.out.println("success - entered new client");
 				//clientMain cm = new clientMain();

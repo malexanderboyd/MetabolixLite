@@ -107,7 +107,7 @@ public class clientMain extends JFrame{
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				newClient nc = new newClient();
+				newClient nc = new newClient(trainerId);
 				nc.setBounds(400,0,450,600);
 				nc.setVisible(true);
 			}

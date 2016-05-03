@@ -3,6 +3,10 @@
 	<classpathentry excluding="formSend.java" kind="src" path="src"/>
 	<classpathentry kind="lib" path="mysql-connector-java-5.1.38-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="javax.mail.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/Users/Mike/Git_cosc457/javax.mail.jar"/>
+>>>>>>> refs/remotes/origin/master
 	<classpathentry kind="output" path="bin"/>
 </classpath>

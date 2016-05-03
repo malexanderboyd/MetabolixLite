@@ -262,6 +262,28 @@ private boolean checkUserExists(String username) {
 			return null;
 		}
 	}
+	
+	public ResultSet getClientPastData(int clientID) {
+
+		java.sql.Connection conn = null;
+		try {
+		conn = DriverManager.getConnection(connect_URL, userName, this.password);
+		
+		String signupQuery = "SELECT * FROM History WHERE ClientID_h = ?";
+		
+		PreparedStatement preparedStmt = conn.prepareStatement(signupQuery);
+		preparedStmt.setInt(1, clientID);
+		
+		System.out.println(preparedStmt.toString());
+		ResultSet rs = preparedStmt.executeQuery();
+		return rs;
+
+		} catch(SQLException sqlE) {
+			sqlE.printStackTrace();
+			return null;
+		}
+	}
+
 
 
 	public ResultSet getClientSkinData(int clientID) {

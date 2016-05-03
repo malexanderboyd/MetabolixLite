@@ -206,16 +206,19 @@ public class client extends JFrame{
 				try {
 					sqlMethods sql = new sqlMethods();
 					ResultSet queryResult1;
-					
+					ResultSet queryResult2;
 					queryResult1 = sql.getClientWeekData(ClientID);
-					while(queryResult1.next())
+					queryResult2 = sql.getClientPastData(ClientID);
+					while(queryResult1.next() && queryResult2.next())
 					{
 
 							String name = queryResult1.getString(2);
 							int age = queryResult1.getInt(3);
-							Date date = queryResult1.getDate(4);		
+							Date date = queryResult2.getDate(2);		
 							int ht = queryResult1.getInt(5);
-							int wt = queryResult1.getInt(6);
+							int wt = queryResult2.getInt(3);
+							
+							
 							
 							weekTableModel.addRow(new Object[] { date, name, age, ht, wt });
 							System.out.println("added week");

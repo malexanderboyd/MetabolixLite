@@ -264,10 +264,13 @@ public class newClient extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				attemptNewClient(trainerId);
+				//this.setVisible(false);
+				
 			}
 		});
 		register.setBounds(178, 465, 84, 27);
 		getContentPane().add(register);
+		
 		
 		
 	}; // Ends newClient 

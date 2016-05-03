@@ -51,6 +51,14 @@ public class client extends JFrame{
 	getContentPane().add(lblMealPlan);
 	
 	JButton btnNewButton = new JButton("New Week");
+	btnNewButton.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			addWeek aw = new addWeek();
+			aw.setBounds(400,0,450,600);
+			aw.setVisible(true);
+		}
+	});
 	btnNewButton.setBounds(82, 34, 117, 23);
 	getContentPane().add(btnNewButton);
 

@@ -4,6 +4,8 @@ import java.awt.Font;
 import java.awt.Label;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.table.DefaultTableModel;
+
 
 
 public class clientMain extends JFrame{
@@ -66,18 +69,7 @@ public class clientMain extends JFrame{
 		TrainerOption.setBounds(259, 68, 82, 22);
 		getContentPane().add(TrainerOption);
 		
-		JButton changepass = new JButton("Change Password");
-		changepass.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
-				//System.out.println("ChangePassword has been clicked");
-				//display passRest.java view!!
-				passRest ps = new passRest();
-				ps.setBounds(400, 400, 400, 400);
-				ps.setVisible(true);
-			}
-		});
-		changepass.setBounds(241, 118, 119, 23);
-		getContentPane().add(changepass);
+
 		
 		JTextPane txt = new JTextPane();
 		txt.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -97,6 +89,7 @@ public class clientMain extends JFrame{
 		});
 		lblNewLabel.setIcon(new ImageIcon(clientMain.class.getResource("/images/small_logo.png")));
 		lblNewLabel.setBounds(0, 0, 38, 33);
+
 		getContentPane().add(lblNewLabel);
 		
 		JLabel trainerVar = new JLabel("");
@@ -110,18 +103,34 @@ public class clientMain extends JFrame{
 				newClient nc = new newClient(trainerId);
 				nc.setBounds(400,0,450,600);
 				nc.setVisible(true);
+				clientSQL.repaint();
 			}
 		});
 		btnNewButton.setBounds(150, 309, 145, 24);
 		getContentPane().add(btnNewButton);
 		setTitle("MetabolixLite: Trainer Panel");
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addWindowFocusListener(new WindowAdapter() {
+		    public void windowGainedFocus(WindowEvent e) {
+		    	//Update Client Table on refocus in case of added clients
+		    	clientSQL.removeAll();
+		    	getClients(trainerId);
+		    	clientSQL.setModel(clientTableModel);
+		    	validate();
+		    	repaint();
+		    }
+		});
+		
+		
+		
 	}
 	
 	
 	
 	private void getClients(final int trainer) {
 		
+		clientTableModel.setRowCount(0);
 		try {
 				sqlMethods sql = new sqlMethods();
 				ResultSet res;

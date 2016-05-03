@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -11,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -62,7 +65,7 @@ public class client extends JFrame{
 			aw.setVisible(true);
 		}
 	});
-	btnNewButton.setBounds(82, 34, 117, 23);
+	btnNewButton.setBounds(180, 34, 117, 23);
 	getContentPane().add(btnNewButton);
 
 	JTabbedPane assessmentTestTabPane = new JTabbedPane(JTabbedPane.TOP);
@@ -100,8 +103,21 @@ public class client extends JFrame{
 			
 		}
 	});
-	sendFormBtn.setBounds(230, 33, 117, 25);
+	sendFormBtn.setBounds(310, 33, 117, 25);
 	getContentPane().add(sendFormBtn);
+	
+	
+	JButton deleteClient = new JButton("DELETE CLIENT");
+	deleteClient.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			deleteClient(clientID);
+			dispose();
+			
+		}
+	});
+	deleteClient.setBounds(400, 33, 117, 25);
+	getContentPane().add(deleteClient);
 	
 	
 	setPreferredSize(new Dimension(650,650));
@@ -113,6 +129,26 @@ public class client extends JFrame{
 	}
 	
 	
+	protected void deleteClient(int client_ID) {
+		// TODO Auto-generated method stub
+		if(JOptionPane.showConfirmDialog(null, "Continue? If you delete this client you will no longer be able "
+				+ "to select this client.\nAll associated information with this client will be deleted."
+				+ "\n Click 'YES' to CONFIRM DELETION this is permanent!","Warning",JOptionPane.YES_OPTION)==JOptionPane.YES_OPTION)
+		{
+			sqlMethods sql = new sqlMethods();
+			boolean success = sql.deleteClientData(client_ID);
+			if(success)
+			{
+				JOptionPane.showMessageDialog(null, "Client successfully deleted.");
+			}
+			else
+			{
+				System.out.println("ERROR DELETING CLIENT - DEBUG deleteClient() - client.java");
+			}   
+		}
+	}
+
+
 	private void generateFitnessPlans()
 	{
 		int weeks = weekTableModel.getRowCount();

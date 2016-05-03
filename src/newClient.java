@@ -2,6 +2,10 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+
+import com.sun.glass.events.WindowEvent;
+
 import javax.swing.JRadioButton;
 import java.awt.Component;
 import javax.swing.Box;
@@ -10,6 +14,7 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
 
 public class newClient extends JFrame{
 	private static JTextField date;
@@ -270,8 +275,7 @@ public class newClient extends JFrame{
 		});
 		register.setBounds(178, 465, 84, 27);
 		getContentPane().add(register);
-		
-		
+
 		
 	}; // Ends newClient 
 		
@@ -286,6 +290,7 @@ public class newClient extends JFrame{
 			if(sql.attemptNewClient2(new String(name.getText()), new Integer(age.getText()), new String(date.getText()), new Integer(textField_4.getText()), new Integer(textField_5.getText()), new Float(midAx.getText()), new Float(subscap.getText()), new Float(tricepts.getText()), new Float(kidney.getText()), new Float(supra.getText()), new Float(chest_f.getText()), new Float(thighs_f.getText()), new Float(Abdom_f.getText()), trainerId, new Float(arms.getText()), new Float(waist.getText()), new Float(calfs.getText()), new Float(hips.getText()), new Float(thighs_g.getText()), new Float(neck.getText()), new Float(chest_g.getText()), new Float(abdom_g.getText())))                                                                 
 			{
 				System.out.println("success - entered new client");
+				
 				//clientMain cm = new clientMain();
 				//cm.setVisible(true);
 		

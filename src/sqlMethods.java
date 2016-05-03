@@ -25,7 +25,7 @@ public class sqlMethods {
 	 *	Client_Assessment_Form (C_ID, Liability_Waiver, Environmental_Inventory, Health_History_Questionnaire)
 	 *	Girth(G_date, MidAx, Subscap, Triceps, Kidney, Supra, G_Chest, G_Thigh, G_Abdom, C_IDg)
 	 *	Skinfold(S_Date, Arm, Waist, Calf, Hips, S_Thigh, Neck, S_Chest, S_Abdom, C_IDs)
-	 *	Trainer(trainerID, T_Uname, password, email)
+	 *	Trainer(trainerID, username, password, email)
 	 * 
 	 * 
 	 * 
@@ -443,6 +443,44 @@ private boolean checkUserExists(String username) {
 	        } catch(SQLException sqlE) {
 	            sqlE.printStackTrace();
 	            return null;
+	        }
+	}
+
+	public boolean deleteClientData(int clientID) {
+		
+		// user info
+		 java.sql.Connection conn = null;
+	        try {
+	        conn = DriverManager.getConnection(connect_URL, userName, this.password);
+
+		// skin fold info
+	        String query2 = "delete from Girth where C_IDg = ?";
+	        PreparedStatement preparedStmt2 = conn.prepareStatement(query2);
+	        preparedStmt2.setInt(1, clientID);
+	        
+	        // execute the preparedstatement
+	        preparedStmt2.executeUpdate();
+		// girth info
+	        String query3 = "delete from Skinfold where C_IDs = ?";
+	        PreparedStatement preparedStmt3 = conn.prepareStatement(query3);
+	        preparedStmt3.setInt(1, clientID);
+	   
+	        // execute the preparedstatement
+	        preparedStmt3.executeUpdate();
+	       
+	        
+	        // user data
+	        String query = "delete from Client where Client_ID = ?";
+	        PreparedStatement preparedStmt = conn.prepareStatement(query);
+	        preparedStmt.setInt(1, clientID);
+	         
+	        preparedStmt.executeUpdate();
+	        
+	        conn.close();
+	        return true;
+	        } catch(SQLException sqlE) {
+	            sqlE.printStackTrace();
+	            return false;
 	        }
 	}
 	

@@ -127,6 +127,7 @@ public class mainView extends JFrame {
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 		mainFrame.setLocationRelativeTo(null);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	};
 

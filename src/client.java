@@ -24,7 +24,10 @@ public class client extends JFrame{
 	
 	clientID = client;
 		setupTables();
-	
+		updateTables(clientID);
+		generateFitnessPlans();
+		
+	System.out.println(clientID);
 	// might need a re-work to better lay it out 
 	setTitle("MetabolixLite: Client Manager");
 	getContentPane().setBackground(new Color(255, 235, 205));
@@ -103,13 +106,9 @@ public class client extends JFrame{
 	
 	setPreferredSize(new Dimension(650,650));
 	setLocationRelativeTo(null);
+
+
 	pack();
-	updateTables();
-	generateFitnessPlans();
-	repaint();
-	
-	
-	
 
 	}
 	
@@ -117,10 +116,11 @@ public class client extends JFrame{
 	private void generateFitnessPlans()
 	{
 		int weeks = weekTableModel.getRowCount();
+		System.out.println(weeks + " weeks");
 		for(int i = 0; i < weeks; i++)
 		{
-			fitness_weight = (double) weekTableModel.getValueAt(i, 4);
-			fitness_height = (double) weekTableModel.getValueAt(i, 3);
+			fitness_weight = (int) weekTableModel.getValueAt(i, 4);
+			fitness_height = (int) weekTableModel.getValueAt(i, 3);
 			int age = (int) weekTableModel.getValueAt(i, 2);
 			double sf = ((double) skinTableModel.getValueAt(i, 8)) + ((double) skinTableModel.getValueAt(i, 5)) + (double) skinTableModel.getValueAt(i, 7) ;
 			double density = (1.10938 - (0.0008267*sf) + 0.0000016*(sf*sf) - (0.0002574*age));
@@ -135,7 +135,7 @@ public class client extends JFrame{
 			int calories = (int) (rmr+200);
 			/*"Date", "Weight", "LBW", "FW", "RMR", "EX MR",
 			"Protein (g)", "Carbs (g)", "Fats (g)"*/
-			//fitnessPlanTableModel.addRow(new Object { weekTableModel.getValueAt(i, 0), fitness_weight, lbw, fw, rmr, exmr, protein, carbs, fats, calories}); 
+			fitnessPlanTableModel.addRow(new Object[] { weekTableModel.getValueAt(i, 0), fitness_weight, lbw, fw, rmr, exmr, protein, carbs, fats, calories}); 
 		}
 	}
 	
@@ -156,7 +156,7 @@ public class client extends JFrame{
 	
 	
 	
-	private void updateTables()
+	private void updateTables(int ClientID)
 	{
 		weekTableModel.setRowCount(0);
 		skinTableModel.setRowCount(0);
@@ -172,17 +172,17 @@ public class client extends JFrame{
 					ResultSet queryResult1;
 					
 					queryResult1 = sql.getClientWeekData(ClientID);
-					
 					while(queryResult1.next())
 					{
 
-							String name = queryResult1.getString(2) + queryResult1.getString(3);
-							int age = queryResult1.getInt(4);
-							Date date = queryResult1.getDate(5);		
-							int ht = queryResult1.getInt(6);
-							int wt = queryResult1.getInt(7);
+							String name = queryResult1.getString(2);
+							int age = queryResult1.getInt(3);
+							Date date = queryResult1.getDate(4);		
+							int ht = queryResult1.getInt(5);
+							int wt = queryResult1.getInt(6);
 							
 							weekTableModel.addRow(new Object[] { date, name, age, ht, wt });
+							System.out.println("added week");
 					}
 					//Client(Client_ID, Client_Fname, Client_Lname, Client_Age, Date_Entered (date), Height (int), Weight(int), Trainer_Uname)
 
@@ -266,6 +266,7 @@ public class client extends JFrame{
 						girth_thigh = queryResult3.getFloat(8);
 						girth_abdom = queryResult3.getFloat(9);
 						girthTableModel.addRow(new Object[] { date, midax, subscap, tricep, kidney, supra, girth_chest, girth_thigh, girth_abdom });
+						System.out.println("added girth");
 					}
 					//Girth(G_date, MidAx, Subscap, Triceps, Kidney, Supra, G_Chest, G_Thigh, G_Abdom, C_IDg)
 					//"Date", "Mid Ax", "Subscap", "Triceps", "Kidney", "Supra", "Chest", "Thigh", "Abdom"
@@ -282,8 +283,6 @@ public class client extends JFrame{
 		runner2.run();
 		runner3.run();
 
-		
-
 
 
 
@@ -294,6 +293,7 @@ public class client extends JFrame{
 		//Client(Client_ID, Client_Fname, Client_Lname, Client_Age, Date_Entered, Height, Weight, Trainer_Uname)
 		fitnessPlanTableModel = new DefaultTableModel() {
 			Class[] columnTypes = new Class[] {
+					Object.class, Object.class, Object.class, Object.class, Object.class,
 					Object.class, Object.class, Object.class, Object.class, Object.class
 			};
 			public Class getColumnClass(int columnIndex) {
@@ -394,8 +394,8 @@ public class client extends JFrame{
 	private double skin_chest;
 	private double skin_abdom;
 	
-	private double fitness_weight;
-	private double fitness_height;
+	private int fitness_weight;
+	private int fitness_height;
 	private double bf;
 	private double lbw;
 	private double fw;

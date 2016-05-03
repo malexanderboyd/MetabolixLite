@@ -253,9 +253,9 @@ private boolean checkUserExists(String username) {
 		PreparedStatement preparedStmt = conn.prepareStatement(signupQuery);
 		preparedStmt.setInt(1, clientID);
 		
+		System.out.println(preparedStmt.toString());
 		ResultSet rs = preparedStmt.executeQuery();
-
-			return rs;
+		return rs;
 
 		} catch(SQLException sqlE) {
 			sqlE.printStackTrace();

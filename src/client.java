@@ -44,6 +44,8 @@ public class client extends JFrame{
 	
 	fitnessPlanTable = new JTable();
 	fitnessPlanTable.setModel(fitnessPlanTableModel);
+	fitnessPlanTable.getColumn("Date").setMinWidth(75);
+	fitnessPlanTable.getColumn("Date").setMaxWidth(75);
 	mealPlan.setViewportView(fitnessPlanTable);
 	
 	JLabel weekDataLabel = new JLabel("Progress Data:");
@@ -79,6 +81,8 @@ public class client extends JFrame{
 	
 	skinTable = new JTable();
 	skinTable.setModel(skinTableModel);
+	skinTable.getColumn("Date").setMinWidth(75);
+	skinTable.getColumn("Date").setMaxWidth(75);
 	fold.setViewportView(skinTable);
 	
 	JScrollPane girth = new JScrollPane();
@@ -86,6 +90,8 @@ public class client extends JFrame{
 	
 	girthTable = new JTable();
 	girthTable.setModel(girthTableModel);
+	girthTable.getColumn("Date").setMinWidth(75);
+	girthTable.getColumn("Date").setMaxWidth(75);
 	girth.setViewportView(girthTable);
 	
 	JScrollPane scrollPane = new JScrollPane();
@@ -94,6 +100,8 @@ public class client extends JFrame{
 	
 	weekTable = new JTable();
 	weekTable.setModel(weekTableModel);
+	weekTable.getColumn("Date").setMinWidth(75);
+	weekTable.getColumn("Date").setMaxWidth(75);
 	scrollPane.setViewportView(weekTable);
 	
 	JButton sendFormBtn = new JButton("Send Forms");

@@ -156,7 +156,7 @@ public class client extends JFrame{
 	
 	
 	
-	private void updateTables(int ClientID)
+	private void updateTables(final int ClientID)
 	{
 		weekTableModel.setRowCount(0);
 		skinTableModel.setRowCount(0);

@@ -5,7 +5,9 @@ import java.awt.Label;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
@@ -222,6 +224,7 @@ public class addWeek extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				attemptAddWeek(client);
+				setVisible(false);
 			}
 		});
 		submit.setBounds(177, 407, 84, 27);
@@ -240,6 +243,7 @@ public class addWeek extends JFrame{
 		if(sql.attemptAddWeek(client, new String(date.getText()), new Integer(textField_5.getText()), new Float(midAx.getText()), new Float(subscap.getText()), new Float(tricepts.getText()), new Float(kidney.getText()), new Float(supra.getText()), new Float(chest_f.getText()), new Float(thights_f.getText()), new Float(Abdom_f.getText()), new Float(arms.getText()), new Float(waist.getText()), new Float(calfs.getText()), new Float(hips.getText()), new Float(thighs_g.getText()), new Float(neck.getText()), new Float(chest_g.getText()), new Float(abdom_g.getText())))                                                                 
 		{
 			System.out.println("success - entered new client");
+			JOptionPane.showMessageDialog(null, "New week successfully added.");
 			//clientMain cm = new clientMain();
 			//cm.setVisible(true);
 	

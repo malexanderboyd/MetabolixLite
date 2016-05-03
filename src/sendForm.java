@@ -1,11 +1,14 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.sql.ResultSet;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -87,7 +90,7 @@ public class sendForm extends JFrame{
 		
 		//set sql client form vars
 		sql.formSet(client, health, envi, lia);		
-		
+		JOptionPane.showMessageDialog(null, "Email sent succesfully.");
 		} catch(Exception e){
 			e.printStackTrace();
 		}

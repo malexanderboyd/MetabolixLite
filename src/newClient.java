@@ -1,11 +1,15 @@
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.JRadioButton;
+
 import java.awt.Component;
+
 import javax.swing.Box;
+
 import java.awt.Label;
 import java.awt.Button;
 import java.awt.Color;
@@ -270,8 +274,7 @@ public class newClient extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				attemptNewClient(trainerId);
-				//this.setVisible(false);
-				
+				setVisible(false);
 			}
 		});
 		register.setBounds(177, 473, 84, 27);
@@ -300,6 +303,7 @@ public class newClient extends JFrame{
 			if(sql.attemptNewClient2(new String(name.getText()), new Integer(age.getText()), new String(date.getText()), new Integer(textField_4.getText()), new Integer(textField_5.getText()), new Float(midAx.getText()), new Float(subscap.getText()), new Float(tricepts.getText()), new Float(kidney.getText()), new Float(supra.getText()), new Float(chest_f.getText()), new Float(thighs_f.getText()), new Float(Abdom_f.getText()), trainerId, new Float(arms.getText()), new Float(waist.getText()), new Float(calfs.getText()), new Float(hips.getText()), new Float(thighs_g.getText()), new Float(neck.getText()), new Float(chest_g.getText()), new Float(abdom_g.getText()), new String (email.getText())))                                                                 
 			{
 				System.out.println("success - entered new client");
+				JOptionPane.showMessageDialog(null, "Client successfully registered.");
 				
 				//clientMain cm = new clientMain();
 				//cm.setVisible(true);

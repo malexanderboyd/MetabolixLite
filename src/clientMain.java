@@ -60,7 +60,7 @@ public class clientMain extends JFrame{
 		
 		Label client = new Label("Your Clients");
 		client.setAlignment(Label.CENTER);
-		client.setBounds(146, 10, 82, 22);
+		client.setBounds(165, 10, 82, 22);
 		getContentPane().add(client);
 
 		
@@ -87,8 +87,8 @@ public class clientMain extends JFrame{
 				acc.setVisible(true);
 			}
 		});
-		lblNewLabel.setIcon(new ImageIcon(clientMain.class.getResource("/images/small_logo.png")));
-		lblNewLabel.setBounds(0, 0, 38, 33);
+		lblNewLabel.setIcon(new ImageIcon(clientMain.class.getResource("/images/cog_icon.png")));
+		lblNewLabel.setBounds(2, 0, 38, 33);
 
 		getContentPane().add(lblNewLabel);
 		
@@ -106,7 +106,7 @@ public class clientMain extends JFrame{
 				clientSQL.repaint();
 			}
 		});
-		btnNewButton.setBounds(117, 309, 145, 24);
+		btnNewButton.setBounds(150, 309, 145, 24);
 		getContentPane().add(btnNewButton);
 		setTitle("MetabolixLite: Trainer Panel");
 		setLocationRelativeTo(null);
@@ -185,4 +185,3 @@ public class clientMain extends JFrame{
 private DefaultTableModel clientTableModel;	
 private ArrayList<Integer> clientIds;
 }
-

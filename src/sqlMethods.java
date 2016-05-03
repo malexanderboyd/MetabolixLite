@@ -80,14 +80,14 @@ public class sqlMethods {
 	}
 	
 	//send client info to DB
-	public Boolean attemptNewClient2(String name, Integer age, String date, Integer height, Integer weight, Float midax, Float subscap, Float triceps, Float kidney, Float supra, Float gchest, Float gthigh, Float gabdom, Integer trainerId, Float arm, Float waist, Float calf, Float hips, Float s_thigh, Float neck, Float s_chest, Float s_abdom) {
+	public Boolean attemptNewClient2(String name, Integer age, String date, Integer height, Integer weight, Float midax, Float subscap, Float triceps, Float kidney, Float supra, Float gchest, Float gthigh, Float gabdom, Integer trainerId, Float arm, Float waist, Float calf, Float hips, Float s_thigh, Float neck, Float s_chest, Float s_abdom, String email) {
 		
 		java.sql.Connection conn = null;
 		try {
 		conn = DriverManager.getConnection(connect_URL, userName, this.password);
 		
 		Statement st = conn.createStatement();
-		st.executeUpdate("insert into Client (Client_name, Client_Age, Height, Trainer_id) VALUES('" + name + "', '"+ age +"', '"+ height +"', '"+ trainerId +"')");
+		st.executeUpdate("insert into Client (Client_name, Client_Age, Height, Trainer_id, Client_email) VALUES('" + name + "', '"+ age +"', '"+ height +"', '"+ trainerId +"', '"+ email +"')");
 
 		//add sql statement to grab the client id to pass into the girth and skinfold table
 		String idQ = ("SELECT Client_ID FROM Client WHERE Client_name = ? AND Client_Age = ?");

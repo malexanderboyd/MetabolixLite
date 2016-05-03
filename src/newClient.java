@@ -15,6 +15,7 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
+import java.awt.Font;
 
 public class newClient extends JFrame{
 	private static JTextField date;
@@ -38,13 +39,15 @@ public class newClient extends JFrame{
 	private static JTextField hips;
 	private static JTextField thighs_g;
 	private static JTextField calfs;
+	private static JTextField email;
 	public newClient(final int trainerId) {
 		setTitle("MetabolixLite: Client Register");
 		getContentPane().setBackground(new Color(255, 235, 205));
 		getContentPane().setLayout(null);
 		
 		JLabel title = new JLabel("New Client Information");
-		title.setBounds(155, 24, 119, 14);
+		title.setFont(new Font("Tahoma", Font.BOLD, 11));
+		title.setBounds(155, 24, 162, 22);
 		getContentPane().add(title);
 		
 		JLabel lblNewLabel = new JLabel("Date:");
@@ -80,7 +83,7 @@ public class newClient extends JFrame{
 		getContentPane().add(female);
 		
 		JLabel lblAge = new JLabel("Age:");
-		lblAge.setBounds(228, 57, 46, 14);
+		lblAge.setBounds(210, 60, 46, 14);
 		getContentPane().add(lblAge);
 		
 		age = new JTextField();
@@ -89,38 +92,39 @@ public class newClient extends JFrame{
 		getContentPane().add(age);
 		
 		JLabel lblHeight = new JLabel("Height (in):");
-		lblHeight.setBounds(228, 88, 66, 14);
+		lblHeight.setBounds(210, 88, 66, 14);
 		getContentPane().add(lblHeight);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(294, 85, 76, 20);
+		textField_4.setBounds(284, 85, 86, 20);
 		getContentPane().add(textField_4);
 		
 		JLabel lblWeightlbs = new JLabel("Weight (lbs):");
-		lblWeightlbs.setBounds(228, 119, 66, 14);
+		lblWeightlbs.setBounds(211, 118, 66, 14);
 		getContentPane().add(lblWeightlbs);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(294, 116, 76, 20);
+		textField_5.setBounds(284, 116, 86, 20);
 		getContentPane().add(textField_5);
 		
 		Label lowerTitle = new Label("New Clients Measurements");
-		lowerTitle.setBounds(152, 157, 137, 22);
+		lowerTitle.setFont(new Font("Dialog", Font.BOLD, 12));
+		lowerTitle.setBounds(147, 169, 170, 20);
 		getContentPane().add(lowerTitle);
 		
 		Label foldHead = new Label("Girth");
 		foldHead.setAlignment(Label.CENTER);
-		foldHead.setBounds(75, 185, 62, 22);
+		foldHead.setBounds(100, 185, 62, 22);
 		getContentPane().add(foldHead);
 		
 		Label label_6 = new Label("Skin Folds");
 		label_6.setAlignment(Label.CENTER);
-		label_6.setBounds(265, 185, 62, 22);
+		label_6.setBounds(308, 185, 62, 22);
 		getContentPane().add(label_6);
 		
-		JLabel lblTricepts = new JLabel("Tricepts:");
+		JLabel lblTricepts = new JLabel("Tricep:");
 		lblTricepts.setBounds(44, 216, 66, 14);
 		getContentPane().add(lblTricepts);
 		
@@ -174,7 +178,7 @@ public class newClient extends JFrame{
 		Abdom_f.setBounds(100, 369, 76, 20);
 		getContentPane().add(Abdom_f);
 		
-		JLabel lblThight = new JLabel("Thighs:\r\n");
+		JLabel lblThight = new JLabel("Thigh:\r\n");
 		lblThight.setBounds(44, 403, 66, 14);
 		getContentPane().add(lblThight);
 		
@@ -210,7 +214,7 @@ public class newClient extends JFrame{
 		chest_g.setBounds(294, 244, 76, 20);
 		getContentPane().add(chest_g);
 		
-		JLabel lblArm = new JLabel("Arms:");
+		JLabel lblArm = new JLabel("Arm:");
 		lblArm.setBounds(246, 278, 48, 14);
 		getContentPane().add(lblArm);
 		
@@ -237,7 +241,7 @@ public class newClient extends JFrame{
 		abdom_g.setBounds(294, 338, 76, 20);
 		getContentPane().add(abdom_g);
 		
-		JLabel lblHips = new JLabel("Hips:");
+		JLabel lblHips = new JLabel("Hip:");
 		lblHips.setBounds(246, 372, 48, 14);
 		getContentPane().add(lblHips);
 		
@@ -246,7 +250,7 @@ public class newClient extends JFrame{
 		hips.setBounds(294, 369, 76, 20);
 		getContentPane().add(hips);
 		
-		JLabel lblThights = new JLabel("Thighs:");
+		JLabel lblThights = new JLabel("Thigh:");
 		lblThights.setBounds(246, 403, 48, 14);
 		getContentPane().add(lblThights);
 		
@@ -255,7 +259,7 @@ public class newClient extends JFrame{
 		thighs_g.setBounds(294, 400, 76, 20);
 		getContentPane().add(thighs_g);
 		
-		JLabel lblCalfs = new JLabel("Calfs:");
+		JLabel lblCalfs = new JLabel("Calf:");
 		lblCalfs.setBounds(246, 434, 48, 14);
 		getContentPane().add(lblCalfs);
 		
@@ -275,6 +279,15 @@ public class newClient extends JFrame{
 		});
 		register.setBounds(178, 465, 84, 27);
 		getContentPane().add(register);
+		
+		JLabel lblEmail = new JLabel("Email ");
+		lblEmail.setBounds(44, 147, 46, 14);
+		getContentPane().add(lblEmail);
+		
+		email = new JTextField();
+		email.setBounds(100, 143, 280, 20);
+		getContentPane().add(email);
+		email.setColumns(10);
 
 		
 	}; // Ends newClient 
@@ -287,7 +300,7 @@ public class newClient extends JFrame{
 		
 			//code to send to DB
 			sqlMethods sql = new sqlMethods();
-			if(sql.attemptNewClient2(new String(name.getText()), new Integer(age.getText()), new String(date.getText()), new Integer(textField_4.getText()), new Integer(textField_5.getText()), new Float(midAx.getText()), new Float(subscap.getText()), new Float(tricepts.getText()), new Float(kidney.getText()), new Float(supra.getText()), new Float(chest_f.getText()), new Float(thighs_f.getText()), new Float(Abdom_f.getText()), trainerId, new Float(arms.getText()), new Float(waist.getText()), new Float(calfs.getText()), new Float(hips.getText()), new Float(thighs_g.getText()), new Float(neck.getText()), new Float(chest_g.getText()), new Float(abdom_g.getText())))                                                                 
+			if(sql.attemptNewClient2(new String(name.getText()), new Integer(age.getText()), new String(date.getText()), new Integer(textField_4.getText()), new Integer(textField_5.getText()), new Float(midAx.getText()), new Float(subscap.getText()), new Float(tricepts.getText()), new Float(kidney.getText()), new Float(supra.getText()), new Float(chest_f.getText()), new Float(thighs_f.getText()), new Float(Abdom_f.getText()), trainerId, new Float(arms.getText()), new Float(waist.getText()), new Float(calfs.getText()), new Float(hips.getText()), new Float(thighs_g.getText()), new Float(neck.getText()), new Float(chest_g.getText()), new Float(abdom_g.getText()), new String (email.getText())))                                                                 
 			{
 				System.out.println("success - entered new client");
 				
@@ -297,6 +310,4 @@ public class newClient extends JFrame{
 			}
 		
 		} // Ends attemptNewClient
-		
-	
 } // Ends

@@ -128,12 +128,12 @@ public class sqlMethods {
 		conn = DriverManager.getConnection(connect_URL, userName, this.password);
 
 		Statement st = conn.createStatement();
-		String update = ("UPDATE Client SET Date_Entered = ?, Weight = ? WHERE Client_ID = ? ");
-		PreparedStatement p = conn.prepareStatement(update);
-		p.setString(1, date);
-		p.setInt(2, weight);
-		p.setInt(3, clientID);
-		p.executeUpdate();
+		st.executeUpdate("insert into History (clientID_h, date_h, weight_h) VALUES ('"+ clientID +"', '"+ date +"', '"+ weight + "')");
+		//PreparedStatement p = conn.prepareStatement(update);
+		//p.setString(1, date);
+		//p.setInt(2, weight);
+		//p.setInt(3, clientID);
+		//p.executeUpdate();
 		
 		//System.out.printf("Client ID is equal to %d", cid);
 		

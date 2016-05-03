@@ -25,9 +25,9 @@ public class sendForm extends JFrame{
 		submit.setBounds(123, 249, 89, 23);
 		getContentPane().add(submit);
 		
-		JLabel label = new JLabel("Please select desired forms and enter email address of recipient.");
-		label.setBounds(9, 176, 330, 20);
-		getContentPane().add(label);
+		JLabel lblPleaseSelectDesired = new JLabel("Please select desired forms to send:");
+		lblPleaseSelectDesired.setBounds(9, 176, 330, 20);
+		getContentPane().add(lblPleaseSelectDesired);
 		
 		final JCheckBox checkBox_health = new JCheckBox("Health Questionnaire");
 		checkBox_health.setBackground(new Color(255, 235, 205));

@@ -31,19 +31,19 @@ public class acctRegister extends JFrame {
 		
 		JLabel lblUsername = new JLabel("Username:");
 		lblUsername.setFont(new Font("Cambria Math", Font.PLAIN, 13));
-		lblUsername.setBounds(86, 172, 66, 21);
+		lblUsername.setBounds(86, 176, 66, 21);
 		mainFrame.getContentPane().add(lblUsername);
 		
 		userNameInput = new JTextField();
 		lblUsername.setLabelFor(userNameInput);
-		userNameInput.setBounds(152, 173, 109, 20);
+		userNameInput.setBounds(152, 176, 109, 20);
 		mainFrame.getContentPane().add(userNameInput);
 		userNameInput.setColumns(10);
 		
 		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setLabelFor(lblPassword);
 		lblPassword.setFont(new Font("Cambria Math", Font.PLAIN, 13));
-		lblPassword.setBounds(86, 210, 66, 14);
+		lblPassword.setBounds(86, 207, 66, 14);
 		mainFrame.getContentPane().add(lblPassword);
 		
 		passwordInput = new JTextField();
@@ -58,13 +58,13 @@ public class acctRegister extends JFrame {
 		
 		
 		emailInput = new JTextField();
-		emailInput.setBounds(152, 239, 109, 20);
+		emailInput.setBounds(152, 232, 109, 20);
 		mainFrame.getContentPane().add(emailInput);
 		emailInput.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Email:");
 		lblNewLabel.setFont(new Font("Cambria Math", Font.PLAIN, 13));
-		lblNewLabel.setBounds(96, 241, 46, 14);
+		lblNewLabel.setBounds(86, 232, 46, 14);
 		mainFrame.getContentPane().add(lblNewLabel);
 		
 		JButton signUpButton = new JButton("Signup");

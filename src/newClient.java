@@ -88,7 +88,7 @@ public class newClient extends JFrame{
 		
 		age = new JTextField();
 		age.setColumns(10);
-		age.setBounds(284, 54, 86, 20);
+		age.setBounds(294, 57, 86, 20);
 		getContentPane().add(age);
 		
 		JLabel lblHeight = new JLabel("Height (in):");
@@ -97,16 +97,16 @@ public class newClient extends JFrame{
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(284, 85, 86, 20);
+		textField_4.setBounds(294, 88, 86, 20);
 		getContentPane().add(textField_4);
 		
 		JLabel lblWeightlbs = new JLabel("Weight (lbs):");
-		lblWeightlbs.setBounds(211, 118, 66, 14);
+		lblWeightlbs.setBounds(211, 118, 73, 14);
 		getContentPane().add(lblWeightlbs);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(284, 116, 86, 20);
+		textField_5.setBounds(294, 116, 86, 20);
 		getContentPane().add(textField_5);
 		
 		Label lowerTitle = new Label("New Clients Measurements");
@@ -277,7 +277,7 @@ public class newClient extends JFrame{
 				
 			}
 		});
-		register.setBounds(178, 465, 84, 27);
+		register.setBounds(177, 473, 84, 27);
 		getContentPane().add(register);
 		
 		JLabel lblEmail = new JLabel("Email ");

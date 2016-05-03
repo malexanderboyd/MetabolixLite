@@ -60,7 +60,7 @@ public class clientMain extends JFrame{
 		
 		Label client = new Label("Your Clients");
 		client.setAlignment(Label.CENTER);
-		client.setBounds(165, 10, 82, 22);
+		client.setBounds(146, 10, 82, 22);
 		getContentPane().add(client);
 
 		
@@ -106,7 +106,7 @@ public class clientMain extends JFrame{
 				clientSQL.repaint();
 			}
 		});
-		btnNewButton.setBounds(150, 309, 145, 24);
+		btnNewButton.setBounds(117, 309, 145, 24);
 		getContentPane().add(btnNewButton);
 		setTitle("MetabolixLite: Trainer Panel");
 		setLocationRelativeTo(null);

@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
 
 public class addWeek extends JFrame{
 	private static JTextField date;
@@ -35,7 +36,8 @@ public class addWeek extends JFrame{
 		getContentPane().setLayout(null);
 		
 		JLabel title = new JLabel("Client's New Week");
-		title.setBounds(178, 21, 111, 25);
+		title.setFont(new Font("Tahoma", Font.BOLD, 11));
+		title.setBounds(163, 11, 111, 25);
 		getContentPane().add(title);
 		
 		JLabel lblNewLabel = new JLabel("Date:");
@@ -48,29 +50,30 @@ public class addWeek extends JFrame{
 		date.setColumns(10);
 		
 		JLabel lblWeightlbs = new JLabel("Weight (lbs):");
-		lblWeightlbs.setBounds(228, 57, 66, 14);
+		lblWeightlbs.setBounds(215, 60, 79, 14);
 		getContentPane().add(lblWeightlbs);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(294, 54, 76, 20);
+		textField_5.setBounds(294, 57, 76, 20);
 		getContentPane().add(textField_5);
 		
 		Label lowerTitle = new Label("New Week's Measurement");
-		lowerTitle.setBounds(157, 93, 151, 22);
+		lowerTitle.setFont(new Font("Dialog", Font.BOLD, 12));
+		lowerTitle.setBounds(147, 93, 167, 22);
 		getContentPane().add(lowerTitle);
 		
 		Label foldHead = new Label("Girth");
 		foldHead.setAlignment(Label.CENTER);
-		foldHead.setBounds(75, 121, 62, 22);
+		foldHead.setBounds(98, 121, 62, 22);
 		getContentPane().add(foldHead);
 		
 		Label label_6 = new Label("Skinfolds");
 		label_6.setAlignment(Label.CENTER);
-		label_6.setBounds(265, 121, 62, 22);
+		label_6.setBounds(294, 121, 62, 22);
 		getContentPane().add(label_6);
 		
-		JLabel lblTricepts = new JLabel("Tricepts:");
+		JLabel lblTricepts = new JLabel("Tricep:");
 		lblTricepts.setBounds(44, 152, 66, 14);
 		getContentPane().add(lblTricepts);
 		
@@ -124,7 +127,7 @@ public class addWeek extends JFrame{
 		Abdom_f.setBounds(100, 305, 76, 20);
 		getContentPane().add(Abdom_f);
 		
-		JLabel lblThight = new JLabel("Thights:\r\n");
+		JLabel lblThight = new JLabel("Thigh:");
 		lblThight.setBounds(44, 339, 66, 14);
 		getContentPane().add(lblThight);
 		
@@ -160,7 +163,7 @@ public class addWeek extends JFrame{
 		chest_g.setBounds(294, 180, 76, 20);
 		getContentPane().add(chest_g);
 		
-		JLabel lblArm = new JLabel("Arms:");
+		JLabel lblArm = new JLabel("Arm:");
 		lblArm.setBounds(246, 214, 48, 14);
 		getContentPane().add(lblArm);
 		
@@ -187,7 +190,7 @@ public class addWeek extends JFrame{
 		abdom_g.setBounds(294, 274, 76, 20);
 		getContentPane().add(abdom_g);
 		
-		JLabel lblHips = new JLabel("Hips:");
+		JLabel lblHips = new JLabel("Hip:");
 		lblHips.setBounds(246, 308, 48, 14);
 		getContentPane().add(lblHips);
 		
@@ -196,7 +199,7 @@ public class addWeek extends JFrame{
 		hips.setBounds(294, 305, 76, 20);
 		getContentPane().add(hips);
 		
-		JLabel lblThights = new JLabel("Thights:");
+		JLabel lblThights = new JLabel("Thigh:");
 		lblThights.setBounds(246, 339, 48, 14);
 		getContentPane().add(lblThights);
 		
@@ -205,7 +208,7 @@ public class addWeek extends JFrame{
 		thighs_g.setBounds(294, 336, 76, 20);
 		getContentPane().add(thighs_g);
 		
-		JLabel lblCalfs = new JLabel("Calfs:");
+		JLabel lblCalfs = new JLabel("Calf:");
 		lblCalfs.setBounds(246, 370, 48, 14);
 		getContentPane().add(lblCalfs);
 		
@@ -221,7 +224,7 @@ public class addWeek extends JFrame{
 				attemptAddWeek(client);
 			}
 		});
-		submit.setBounds(178, 401, 84, 27);
+		submit.setBounds(177, 407, 84, 27);
 		getContentPane().add(submit);
 
 	} // Ends add week

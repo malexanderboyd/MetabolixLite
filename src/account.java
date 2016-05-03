@@ -79,7 +79,7 @@ public class account extends JFrame {
 					setVisible(false);
 			}
 		});
-		button.setBounds(111, 329, 109, 23);
+		button.setBounds(106, 330, 109, 23);
 		getContentPane().add(button);
 		
 		JLabel lblNewLabel = new JLabel("Change Password:");
@@ -94,20 +94,20 @@ public class account extends JFrame {
 		
 		JLabel label_4 = new JLabel("Email:");
 		label_4.setFont(new Font("Cambria Math", Font.PLAIN, 13));
-		label_4.setBounds(67, 205, 46, 14);
+		label_4.setBounds(23, 211, 46, 14);
 		getContentPane().add(label_4);
 		
 		JLabel lblUsername = new JLabel("Username:");
 		lblUsername.setFont(new Font("Cambria Math", Font.PLAIN, 13));
-		lblUsername.setBounds(47, 236, 65, 14);
+		lblUsername.setBounds(23, 239, 65, 14);
 		getContentPane().add(lblUsername);
 		
 	    JLabel emailVar = new JLabel(trainerEmail);
-	    emailVar.setBounds(122, 206, 148, 14);
+	    emailVar.setBounds(122, 206, 234, 14);
 	    getContentPane().add(emailVar);
 	       
 	    JLabel usernameVar = new JLabel(trainer);
-	    usernameVar.setBounds(122, 237, 132, 14);
+	    usernameVar.setBounds(122, 237, 221, 14);
 	    getContentPane().add(usernameVar);
 	}
 }

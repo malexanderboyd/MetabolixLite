@@ -67,11 +67,11 @@ public class client extends JFrame{
 			aw.setVisible(true);
 		}
 	});
-	btnNewButton.setBounds(180, 34, 117, 23);
+	btnNewButton.setBounds(58, 34, 117, 23);
 	getContentPane().add(btnNewButton);
 
 	JTabbedPane assessmentTestTabPane = new JTabbedPane(JTabbedPane.TOP);
-	assessmentTestTabPane.setBounds(22, 249, 595, 90);
+	assessmentTestTabPane.setBounds(12, 248, 605, 92);
 	getContentPane().add(assessmentTestTabPane);
 	
 	JScrollPane fold = new JScrollPane();
@@ -105,11 +105,11 @@ public class client extends JFrame{
 			
 		}
 	});
-	sendFormBtn.setBounds(310, 33, 117, 25);
+	sendFormBtn.setBounds(224, 33, 117, 25);
 	getContentPane().add(sendFormBtn);
 	
 	
-	JButton deleteClient = new JButton("DELETE CLIENT");
+	JButton deleteClient = new JButton("Delete Client");
 	deleteClient.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -119,7 +119,7 @@ public class client extends JFrame{
 			
 		}
 	});
-	deleteClient.setBounds(400, 33, 117, 25);
+	deleteClient.setBounds(388, 33, 117, 25);
 	getContentPane().add(deleteClient);
 	
 	

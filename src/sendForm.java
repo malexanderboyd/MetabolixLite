@@ -40,7 +40,7 @@ public class sendForm extends JFrame{
 		
 		final JCheckBox checkBox_envi = new JCheckBox("Environmental Inventory");
 		checkBox_envi.setBackground(new Color(255, 235, 205));
-		checkBox_envi.setBounds(177, 193, 156, 23);
+		checkBox_envi.setBounds(177, 193, 170, 23);
 		getContentPane().add(checkBox_envi);
 		
 		final JCheckBox checkBox_Lia = new JCheckBox("Liability Waiver");
@@ -63,7 +63,6 @@ public class sendForm extends JFrame{
 		submit.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				attemptFormSend(clientID,checkBox_health.isSelected(),checkBox_envi.isSelected(),checkBox_Lia.isSelected(), checkbox_Reimbursement.isSelected());
-				JOptionPane.showMessageDialog(null, "Forms successfully sent.");
 				setVisible(false);
 			}
 		});

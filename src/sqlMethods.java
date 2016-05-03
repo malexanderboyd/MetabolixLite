@@ -361,14 +361,14 @@ private boolean checkUserExists(String username) {
 		java.sql.Connection conn = null;
 		try {
 		conn = DriverManager.getConnection(connect_URL, userName, this.password);
-		
-		String form = "UPDATE Client_Assessment_Form SET Health_History_Questionnaire= ? AND Environmental_Inventory = ? AND Liability_Waiver = ? WHERE C_ID = ?";
+		//	String signupQuery = "insert into Trainer (username, password, email) values (?, ?, ?)";
+		String form = "INSERT INTO Client_Assessment_Form (C_ID, Liability_Waiver, Environmental_Inventory, Health_History_Questionnaire) values (?, ?, ?, ?)";
 		
 		PreparedStatement preparedStmt = conn.prepareStatement(form);
-		preparedStmt.setBoolean(1, health);
-		preparedStmt.setBoolean(2, envi);
-		preparedStmt.setBoolean(3, lia);
-		preparedStmt.setInt(4, clientID);
+		preparedStmt.setBoolean(2, lia);
+		preparedStmt.setBoolean(3, envi);
+		preparedStmt.setBoolean(4, health);
+		preparedStmt.setInt(1, clientID);
 	
 		preparedStmt.executeUpdate();
 		conn.close();

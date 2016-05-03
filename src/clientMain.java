@@ -87,8 +87,8 @@ public class clientMain extends JFrame{
 				acc.setVisible(true);
 			}
 		});
-		lblNewLabel.setIcon(new ImageIcon(clientMain.class.getResource("/images/small_logo.png")));
-		lblNewLabel.setBounds(0, 0, 38, 33);
+		lblNewLabel.setIcon(new ImageIcon(clientMain.class.getResource("/images/cog_icon.png")));
+		lblNewLabel.setBounds(2, 0, 38, 33);
 
 		getContentPane().add(lblNewLabel);
 		

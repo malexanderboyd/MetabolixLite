@@ -3,9 +3,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-
-import com.sun.glass.events.WindowEvent;
-
 import javax.swing.JRadioButton;
 import java.awt.Component;
 import javax.swing.Box;

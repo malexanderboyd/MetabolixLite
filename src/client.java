@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class client extends JFrame{
 	private JTable girthTable;
@@ -111,6 +113,7 @@ public class client extends JFrame{
 	deleteClient.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			weekTable.removeAll();
 			deleteClient(clientID);
 			dispose();
 			
@@ -122,7 +125,15 @@ public class client extends JFrame{
 	
 	setPreferredSize(new Dimension(650,650));
 	setLocationRelativeTo(null);
-
+	addWindowFocusListener(new WindowAdapter() {
+	    public void windowGainedFocus(WindowEvent e) {
+	    	//Update Client Table on refocus in case of added clients
+	    	updateTables(clientID);
+	    	generateFitnessPlans();
+	    	validate();
+	    	repaint();
+	    }
+	});
 
 	pack();
 
@@ -209,23 +220,29 @@ public class client extends JFrame{
 					ResultSet queryResult2;
 					queryResult1 = sql.getClientWeekData(ClientID);
 					queryResult2 = sql.getClientPastData(ClientID);
-					while(queryResult1.next() && queryResult2.next())
+					Date date = null;
+					int wt = 0;
+					queryResult1.next();
+					while(queryResult2.next())
 					{
-
 							String name = queryResult1.getString(2);
 							int age = queryResult1.getInt(3);
-							Date date = queryResult2.getDate(2);		
 							int ht = queryResult1.getInt(5);
-							int wt = queryResult2.getInt(3);
+							date = queryResult2.getDate(2);	
+							wt = queryResult2.getInt(3);
+							
+							
 							
 							
 							
 							weekTableModel.addRow(new Object[] { date, name, age, ht, wt });
+
 							System.out.println("added week");
 					}
 					//Client(Client_ID, Client_Fname, Client_Lname, Client_Age, Date_Entered (date), Height (int), Weight(int), Trainer_Uname)
 
 					queryResult1.close();
+					queryResult2.close();
 				} catch(Exception e)
 				{
 					e.printStackTrace();

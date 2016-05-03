@@ -87,8 +87,8 @@ public class sqlMethods {
 		conn = DriverManager.getConnection(connect_URL, userName, this.password);
 		
 		Statement st = conn.createStatement();
-		st.executeUpdate("insert into Client (Client_name, Client_Age, Date_Entered, Height, Weight, Trainer_id) VALUES('" + name + "', '"+ age +"', '"+ date + "', '"+ height +"', '"+ weight +"', '"+ trainerId +"')");
-		
+		st.executeUpdate("insert into Client (Client_name, Client_Age, Height, Trainer_id) VALUES('" + name + "', '"+ age +"', '"+ height +"', '"+ trainerId +"')");
+
 		//add sql statement to grab the client id to pass into the girth and skinfold table
 		String idQ = ("SELECT Client_ID FROM Client WHERE Client_name = ? AND Client_Age = ?");
 		PreparedStatement preparedStmt = conn.prepareStatement(idQ);
@@ -101,7 +101,9 @@ public class sqlMethods {
 		cid = r.getInt("Client_ID");
 		}
 		
-		//System.out.printf("Client ID is equal to %d", cid);
+		Statement st2 = conn.createStatement();
+		st2.executeUpdate("insert into History (clientID_h, date_h, weight_h) VALUES('" + cid + "', '"+ date +"', '"+ weight +"')");
+		
 		
 		//girth
 		st.executeUpdate("insert into Girth (G_date, MidAx, Subscap, Triceps, Kidney, Supra, G_Chest, G_Thigh, G_Abdom, C_IDg) VALUES('"+ date + "', '"+ midax +"', '"+ subscap+"', '"+ triceps +"', '"+ kidney +"', '"+ supra +"', '"+ gchest +"', '"+ gthigh +"', '"+ gabdom +"', '"+ cid +"')");                                                   
@@ -468,6 +470,14 @@ private boolean checkUserExists(String username) {
 	        // execute the preparedstatement
 	        preparedStmt3.executeUpdate();
 	       
+	        
+	        // user history
+	        String query24 = "delete from History where clientID_h = ?";
+	        PreparedStatement preparedStmt24 = conn.prepareStatement(query24);
+	        preparedStmt24.setInt(1, clientID);
+	         
+	        preparedStmt24.executeUpdate();
+	        
 	        
 	        // user data
 	        String query = "delete from Client where Client_ID = ?";

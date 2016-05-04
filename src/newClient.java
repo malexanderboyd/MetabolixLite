@@ -272,8 +272,79 @@ public class newClient extends JFrame{
 		register.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				attemptNewClient(trainerId);
-				setVisible(false);
+				String d = date.getText();
+				System.out.println(d);
+				
+				if (date.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Date");
+				}
+				else if (name.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Name");
+				}
+				else if (age.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter an Age");
+				}
+				else if (textField_4.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Height");
+				}
+				else if (textField_5.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Weight");
+				}
+				else if (email.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter an Email");
+				}
+				else if (subscap.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Subscap Measurement");
+				}
+				else if (tricepts.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Tricep Measurement");
+				}
+				else if (midAx.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a MidAx Measurement");
+				}
+				else if (kidney.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Kidney Measurement");
+				}
+				else if (Abdom_f.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter an Abdomen Girth Measurement");
+				}
+				else if (supra.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Supra Measurement");
+				}
+				else if (chest_f.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Chest Girth Measurement");
+				}
+				else if (thighs_f.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Thigh Girth Measurement");
+				}
+				else if (neck.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Neck Measurement");
+				}
+				else if (chest_g.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Chest Skin Fold Measurement");
+				}
+				else if (arms.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter an Arm Measurement");
+				}
+				else if (waist.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Waist Measurement");
+				}
+				else if (abdom_g.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter an Abdomen Skin Fold Measurement");
+				}
+				else if (hips.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Hip Measurement");
+				}
+				else if (thighs_g.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Thigh Skin Fold Measurement");
+				}			
+				else if (calfs.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Calf Measurement");
+				}
+				else {
+					attemptNewClient(trainerId);
+				}
+				//setVisible(false);
 			}
 		});
 		register.setBounds(177, 473, 84, 27);
@@ -293,9 +364,34 @@ public class newClient extends JFrame{
 		
 		//Method to validate input and send to DB
 		private static void attemptNewClient(int trainerId) {
+		
+			/*	private static JTextField date;
+	private static JTextField name;
+	private static JTextField age;
+	private static JTextField textField_4; height
+	private static JTextField textField_5; weight
+	private static JTextField subscap;
+	private static JTextField tricepts;
+	private static JTextField midAx;
+	private static JTextField kidney;
+	private static JTextField Abdom_f;
+	private static JTextField supra;
+	private static JTextField chest_f;
+	private static JTextField thighs_f;
+	private static JTextField neck;
+	private static JTextField chest_g;
+	private static JTextField arms;
+	private static JTextField waist;
+	private static JTextField abdom_g;
+	private static JTextField hips;
+	private static JTextField thighs_g;
+	private static JTextField calfs;
+	private static JTextField email;*/
+			
+
 			
 			
-			//need to add methods to force insert into all fields....will add this last 
+			//else {
 		
 			//code to send to DB
 			sqlMethods sql = new sqlMethods();
@@ -308,6 +404,8 @@ public class newClient extends JFrame{
 				//cm.setVisible(true);
 		
 			}
+			
+			//} // ends else
 		
 		} // Ends attemptNewClient
 } // Ends

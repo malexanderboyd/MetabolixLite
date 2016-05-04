@@ -272,9 +272,7 @@ public class newClient extends JFrame{
 		register.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String d = date.getText();
-				System.out.println(d);
-				
+
 				if (date.getText().length() <= 0) {
 					JOptionPane.showMessageDialog(null, "Please Enter a Date");
 				}

@@ -223,8 +223,67 @@ public class addWeek extends JFrame{
 		submit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				if (date.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Date");
+				}
+				else if (textField_5.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Weight");
+				}
+				else if (subscap.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Subscap Measurement");
+				}
+				else if (tricepts.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Tricep Measurement");
+				}
+				else if (midAx.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a MidAx Measurement");
+				}
+				else if (kidney.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Kidney Measurement");
+				}
+				else if (Abdom_f.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter an Abdomen Girth Measurement");
+				}
+				else if (supra.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Supra Measurement");
+				}
+				else if (chest_f.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Chest Girth Measurement");
+				}
+				else if (thights_f.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Thigh Girth Measurement");
+				}
+				else if (neck.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Neck Measurement");
+				}
+				else if (chest_g.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Chest Skin Fold Measurement");
+				}
+				else if (arms.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter an Arm Measurement");
+				}
+				else if (waist.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Waist Measurement");
+				}
+				else if (abdom_g.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter an Abdomen Skin Fold Measurement");
+				}
+				else if (hips.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Hip Measurement");
+				}
+				else if (thighs_g.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Thigh Skin Fold Measurement");
+				}			
+				else if (calfs.getText().length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Please Enter a Calf Measurement");
+				}
+				else {
+				
 				attemptAddWeek(client);
 				setVisible(false);
+				
+				}
 			}
 		});
 		submit.setBounds(177, 407, 84, 27);

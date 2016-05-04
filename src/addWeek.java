@@ -288,6 +288,10 @@ public class addWeek extends JFrame{
 		});
 		submit.setBounds(177, 407, 84, 27);
 		getContentPane().add(submit);
+		
+		JLabel lblFds = new JLabel("Year-Day-Month");
+		lblFds.setBounds(100, 77, 106, 14);
+		getContentPane().add(lblFds);
 
 	} // Ends add week
 	
@@ -309,5 +313,4 @@ public class addWeek extends JFrame{
 		}
 	
 	} // Ends attemptNewClient
-
 }

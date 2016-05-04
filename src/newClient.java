@@ -356,6 +356,10 @@ public class newClient extends JFrame{
 		email.setBounds(100, 143, 280, 20);
 		getContentPane().add(email);
 		email.setColumns(10);
+		
+		JLabel lblYeardaymonth = new JLabel("Year-Day-Month");
+		lblYeardaymonth.setBounds(100, 42, 106, 14);
+		getContentPane().add(lblYeardaymonth);
 
 		
 	}; // Ends newClient 
